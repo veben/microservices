@@ -5,10 +5,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 import java.util.Objects;
 import java.util.UUID;
@@ -31,6 +28,9 @@ public class LineOrder {
 
     private int number;
 
+    @ManyToOne
+    private Order parentOrder;
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -46,22 +46,6 @@ public class LineOrder {
 
     public LineOrder(String product, int number) {
         this.product = product;
-        this.number = number;
-    }
-
-    public String getProduct() {
-        return product;
-    }
-
-    public void setProduct(String product) {
-        this.product = product;
-    }
-
-    public int getNumber() {
-        return number;
-    }
-
-    public void setNumber(int number) {
         this.number = number;
     }
 }

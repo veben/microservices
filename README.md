@@ -1,6 +1,6 @@
 # Microservices
 
-## Technologies to configure to build and run in docker
+## Technologies to configure to build and run with docker
 - Docker Desktop for Windows
     - Download & install
     - Know your current version : `docker --version`
@@ -11,9 +11,9 @@
         - Change configuration: 
             - Name: Docker
             - TCP socket: checked
-            - Engine API URL: tcp/localhost:2375
+            - Engine API URL: `tcp/localhost:2375`
 
-## Technologies to configure to build and run in local
+## Technologies to configure to build and run without docker
 - JDK : openjdk-11.0.4
     - Download & install
     - Create env var: **JAVA_HOME**=‪`C:\Env\tools\jdk\openjdk-11u-11.0.4_11`

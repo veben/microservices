@@ -20,7 +20,7 @@
     - Go to folder: `order`
     - Run with Docker: `docker run -it --name order --publish=8080:8080 order:test`
 
-### Build & Run with Docker Compose
+## Build & Run with Docker Compose
 - Go to folder: `order`
 - Build with Docker Compose: `docker-compose up --build -d && docker-compose logs -f`
 

@@ -12,13 +12,13 @@ import static lombok.AccessLevel.PROTECTED;
 @Getter
 @Setter
 @NoArgsConstructor(access = PROTECTED)
-@AllArgsConstructor(access = PROTECTED)
+@AllArgsConstructor
 @ToString
 @Embeddable
 public class Buyer {
     private String email;
-    private String nom;
-    private String prenom;
+    private String name;
+    private String surname;
 
     @Embedded
     private Address address;
