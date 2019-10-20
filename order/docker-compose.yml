@@ -1,0 +1,9 @@
+version: '3.7'
+services:
+  order-database:
+    container_name: order-postgresql-database
+    image: postgres:11.5-alpine
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_DB=order

@@ -1,0 +1,35 @@
+### Compile
+*/target/
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### Jar files ###
+/docker/files/lib/*.jar
+
+### NetBeans ###
+/nbproject/private/
+/build/
+/nbbuild/
+/dist/
+/nbdist/
+
+/.nb-gradle/
+/.metadata/
+
+### Reports
+jacoco/*
+**/target/
+.DS_Store
