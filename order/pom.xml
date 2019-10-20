@@ -12,7 +12,7 @@
 
 	<groupId>com.veben.microservices</groupId>
 	<artifactId>order</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 
 	<name>Order</name>
 	<description>Order management</description>
@@ -139,6 +139,9 @@
 			<activation>
 				<activeByDefault>true</activeByDefault>
 			</activation>
+		</profile>
+		<profile>
+			<id>docker</id>
 		</profile>
 	</profiles>
 

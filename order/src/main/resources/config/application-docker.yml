@@ -1,0 +1,11 @@
+database:
+  url: jdbc:postgresql://order-postgresql-database:5432/order
+  username: postgres
+  password:
+
+spring:
+  jpa:
+    show-sql: true
+  datasource:
+    data: classpath:data/data-local.sql
+    initialization-mode: always
