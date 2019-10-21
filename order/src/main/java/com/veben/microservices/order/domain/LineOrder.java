@@ -1,27 +1,28 @@
 package com.veben.microservices.order.domain;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-import javax.persistence.*;
-
-import java.util.Objects;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import java.util.UUID;
 
-import static lombok.AccessLevel.PROTECTED;
+import static lombok.AccessLevel.NONE;
 
 @Getter
 @Setter
-@NoArgsConstructor(access = PROTECTED)
+@EqualsAndHashCode(of = "id")
 @ToString
 @Entity
 @Table(name = "line_order")
 public class LineOrder {
 
     @Id
-    @Column(columnDefinition = "uuid")
+    @Setter(NONE)
     private UUID id;
 
     private String product;
@@ -31,20 +32,12 @@ public class LineOrder {
     @ManyToOne
     private Order parentOrder;
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        LineOrder lineOrder = (LineOrder) o;
-        return Objects.equals(id, lineOrder.id);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id);
+    protected LineOrder() {
+        this.id = UUID.randomUUID();
     }
 
     public LineOrder(String product, int number) {
+        this();
         this.product = product;
         this.number = number;
     }

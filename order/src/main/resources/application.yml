@@ -15,7 +15,6 @@ spring:
         dialect: org.hibernate.dialect.PostgreSQLDialect
         temp:
           use_jdbc_metadata_defaults: false
-    open-in-view: false
 
 # Actuator
 management:
