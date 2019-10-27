@@ -1,4 +1,4 @@
-package com.veben.microservices.order.ext.database;
+package com.veben.microservices.order.ext.db;
 
 import com.veben.microservices.order.domain.Order;
 import com.veben.microservices.order.domain.OrderRepository;

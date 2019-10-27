@@ -14,8 +14,9 @@ public class OrderApplication {
 
         log.info("**********************************************************************");
         log.info("Order Mircroservice from veben is UP");
-        log.info("Health check is available at localhost:8080/actuator/health");
-        log.info("Swagger is available at localhost:8080/swagger-ui.html");
+        log.info("Health check is available at http://localhost:8091/actuator/health");
+        log.info("Swagger is available at http://localhost:8091/swagger-ui.html");
+        log.info("Database is available at jdbc:postgresql://localhost:5434/order");
         log.info("**********************************************************************");
     }
 }

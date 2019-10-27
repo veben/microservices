@@ -1,14 +1,16 @@
 version: '3.7'
 services:
-  order-database:
-    container_name: order-postgresql-database
+
+  ########################## ORDER ##########################
+  order-postgresql:
+    container_name: order-postgresql
     image: postgres:11.5-alpine
-    ports:
-      - 5432:5432
+    ports: # Map container port 5432 to host port 5434
+      - 5434:5432
     environment:
       - POSTGRES_DB=order
-    expose:
-      - 5432
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=
 
   order:
     container_name: order
@@ -18,6 +20,4 @@ services:
         - APP_NAME=order
         - APP_VERSION=0.0.1
     ports:
-      - 8080:8080
-    environment:
-      - "SPRING_PROFILES_ACTIVE=docker"
+      - 8091:8091

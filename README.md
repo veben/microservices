@@ -24,3 +24,19 @@
     - Create env var: **M3_HOME**=`C:\Env\tools\apache-maven-3.6.2`
 	- Add `%M3_HOME%\bin` to **Path** env var
     - Know your current version: `mvn -version`
+
+## Launch just some Microservices
+- Follow : 
+    - [Developer MS](developer/README.MD)
+    - [Order MS](order/README.MD)
+
+## Manage the whole project with Docker Compose
+- Start: `docker-compose up --build -d && docker-compose logs -f`
+- Stop: `docker-compose down`
+
+## Clean containers and images
+- With Git bash or bash for Windows: 
+    - `docker stop $(docker ps -a -q) && docker rm $(docker ps -a -q) && docker image prune -f`
+    
+## Troubleshooting
+- The following ports have not to be in use: 8090, 8091, 5433,  5434

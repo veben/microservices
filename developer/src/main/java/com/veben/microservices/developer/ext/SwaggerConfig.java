@@ -1,4 +1,4 @@
-package com.veben.microservices.order.ext;
+package com.veben.microservices.developer.ext;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -16,9 +16,9 @@ public class SwaggerConfig {
     @Bean
     public Docket api() {
         return new Docket(DocumentationType.SWAGGER_2)
-                .host("localhost:8091")
+                .host("localhost:8090")
                 .select()
-                .apis(basePackage("com.veben.microservices.order.ext.rest"))
+                .apis(basePackage("com.veben.microservices.developer.ext.rest"))
                 .paths(PathSelectors.any())
                 .build();
     }

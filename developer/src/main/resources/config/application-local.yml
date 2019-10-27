@@ -1,5 +1,5 @@
 database:
-  url: jdbc:postgresql://localhost:5434/order
+  url: jdbc:postgresql://localhost:5433/developer
   username: postgres
   password:
 
