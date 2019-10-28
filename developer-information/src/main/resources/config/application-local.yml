@@ -1,0 +1,4 @@
+mongo:
+  url: mongodb://localhost:27018
+  username: root
+  password: root

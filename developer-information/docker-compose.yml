@@ -1,0 +1,16 @@
+version: '3.7'
+services:
+
+########################## DEVELOPER INFORMATION ##########################
+  developer-information-mongodb:
+    container_name: developer-information-mongodb
+    image: mongo:4.2.1
+    restart: always
+    ports:
+      - 27018:27017
+    environment:
+#      - MONGO_INITDB_ROOT_DATABASE=developer-information
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=root
+    volumes:
+      - "./mongo/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d"

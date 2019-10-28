@@ -1,0 +1,4 @@
+mongo:
+  url: mongodb://developer-information-mongodb:27018
+  username: root
+  password: root

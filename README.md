@@ -27,8 +27,8 @@
 
 ## Launch just some Microservices
 - Follow : 
-    - [Developer MS](developer/README.MD)
-    - [Order MS](order/README.MD)
+    - [Developer MS](blob/master/developer/README.md)
+    - [Order MS](blob/master/order/README.md)
 
 ## Manage the whole project with Docker Compose
 - Start: `docker-compose up --build -d && docker-compose logs -f`

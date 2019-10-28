@@ -1,0 +1,20 @@
+server:
+  port: 8092
+
+spring:
+  application:
+    name: developer-information
+
+  data:
+    mongodb:
+      uri: ${mongo.url}
+      username: ${mongo.username}
+      password: ${mongo.password}
+      database: journalCapacite
+
+# Actuator
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

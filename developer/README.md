@@ -5,13 +5,13 @@
 
 ## Build & Run with Maven
 - Datasource:
-    - Launch PostgreSQL in a Docker container with: `docker run --name developer-postgresql-database -p 5433:5432 -e POSTGRES_DB=developer postgres:11.5-alpine`
+    - Launch PostgreSQL in a Docker container with: `docker run --name developer-postgresql -p 5433:5432 -e POSTGRES_DB=developer postgres:11.5-alpine`
 - Build: `mvn clean install`
 - Run: `mvn spring-boot:run -Dspring-boot.run.profiles=local`
 
 ## Build & Run with Docker
 - Datasource:
-    - Launch PostgreSQL in a Docker container with: `docker run --name developer-postgresql-database -p 5433:5432 -e POSTGRES_DB=developer postgres:11.5-alpine`
+    - Launch PostgreSQL in a Docker container with: `docker run --name developer-postgresql -p 5433:5432 -e POSTGRES_DB=developer postgres:11.5-alpine`
 - Build: `docker build --tag developer:test --rm=true .`
 - Run: `docker run -it --name developer --publish=8090:8090 developer:test`
 
@@ -20,13 +20,14 @@
 - Stop: `docker-compose down`
 
 ## Access
-- Actuator : http://localhost:8090/actuator/health"
-- Swagger : http://localhost:8090/swagger-ui.html"
-- Database : jdbc:postgresql://localhost:5433/developer"
-    - User : postgres
-    - Password :
+- Actuator: http://localhost:8090/actuator/health
+- Swagger: http://localhost:8090/swagger-ui.html
+- Database: jdbc:postgresql://localhost:5433/developer
+    - User: postgres
+    - Password:
     
 ## JDD
+### Developer table:
 | id | location | nickname | speciality |
 | :--- | :--- | :--- | :--- |
 | 3bdfbba3-d472-4431-b9ac-c203e7505b8b | France | veben | java |

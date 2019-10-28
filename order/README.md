@@ -5,13 +5,13 @@
 
 ## Build & Run with Maven
 - Datasource:
-    - Launch PostgreSQL in a Docker container with: `docker run --name order-postgresql-database -p 5434:5432 -e POSTGRES_DB=order postgres:11.5-alpine`
+    - Launch PostgreSQL in a Docker container with: `docker run --name order-postgresql -p 5434:5432 -e POSTGRES_DB=order postgres:11.5-alpine`
 - Build: `mvn clean install`
 - Run: `mvn spring-boot:run -Dspring-boot.run.profiles=local`
 
 ## Build & Run with Docker
 - Datasource:
-    - Launch PostgreSQL in a Docker container with: `docker run --name order-postgresql-database -p 5434:5432 -e POSTGRES_DB=order postgres:11.5-alpine`
+    - Launch PostgreSQL in a Docker container with: `docker run --name order-postgresql -p 5434:5432 -e POSTGRES_DB=order postgres:11.5-alpine`
 - Build: `docker build --tag order:test --rm=true .`
 - Run: `docker run -it --name order --publish=8091:8091 order:test`
 
@@ -20,20 +20,20 @@
 - Stop: `docker-compose down`
 
 ## Access
-- Actuator : http://localhost:8091/actuator/health"
-- Swagger : http://localhost:8091/swagger-ui.html"
-- Database : jdbc:postgresql://localhost:5434/order"
-    - User : postgres
-    - Password :
+- Actuator: http://localhost:8091/actuator/health
+- Swagger: http://localhost:8091/swagger-ui.html
+- Database: jdbc:postgresql://localhost:5434/order
+    - User: postgres
+    - Password:
     
 ## JDD
-### Passed_order table
+### Passed_order table:
 | id | city | country | number | street | email | name | surname | date |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
 | c5a659c3-5ba1-42bb-b1fb-b35d4f589f34 | Clermont-Ferrand | France | 19 | Boussingault | bernard@gmail.com | Vaillant | Bernard | 2017-03-12 14:18:58.000000 |
 | ae4bfe14-b889-4c49-b35f-e89e39f9c31c | Paris | France | 46 | Saint Antoine | jean-michel@gmail.com | Dupont | Jean-Michel | 2019-10-20 14:18:58.000000 |
 
-### Line_order table
+### Line_order table:
 | id | number | product | parent\_order\_id |
 | :--- | :--- | :--- | :--- |
 | ad5a7b50-8885-4311-bbb4-815e0251f344 | 1 | Bike | c5a659c3-5ba1-42bb-b1fb-b35d4f589f34 |
