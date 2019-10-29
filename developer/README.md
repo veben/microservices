@@ -1,23 +1,47 @@
-# Developer
+# Microservice Developer
 
 ## Class Diagram
 ![](./img/class-diagram.png)
 
 ## Build & Run with Maven
 - Datasource:
-    - Launch PostgreSQL in a Docker container with: `docker run --name developer-postgresql -p 5433:5432 -e POSTGRES_DB=developer postgres:11.5-alpine`
-- Build: `mvn clean install`
-- Run: `mvn spring-boot:run -Dspring-boot.run.profiles=local`
+     > Launch PostgreSQL in a Docker container with:
+     ```sh
+      docker run --name developer-postgresql -p 5433:5432 -e POSTGRES_DB=developer postgres:11.5-alpine
+     ```
+- Build:
+    ```sh
+    mvn clean install
+    ```
+- Run:
+    ```sh
+    mvn spring-boot:run -Dspring-boot.run.profiles=local
+    ```
 
 ## Build & Run with Docker
 - Datasource:
-    - Launch PostgreSQL in a Docker container with: `docker run --name developer-postgresql -p 5433:5432 -e POSTGRES_DB=developer postgres:11.5-alpine`
-- Build: `docker build --tag developer:test --rm=true .`
-- Run: `docker run -it --name developer --publish=8090:8090 developer:test`
+     > Launch PostgreSQL in a Docker container with:
+     ```sh
+      docker run --name developer-postgresql -p 5433:5432 -e POSTGRES_DB=developer postgres:11.5-alpine
+     ```
+- Build:
+    ```sh
+    docker build --tag developer:test --rm=true .
+    ```
+- Run:
+    ```sh
+    docker run -it --name developer --publish=8090:8090 developer:test
+    ```
 
 ## Build & Run with Docker Compose
-- Build & Run: `docker-compose up --build -d && docker-compose logs -f`
-- Stop: `docker-compose down`
+- Build & Run:
+    ```sh
+    docker-compose up --build -d && docker-compose logs -f
+    ```
+- Stop:
+    ```sh
+    docker-compose down
+    ```
 
 ## Access
 - Actuator: http://localhost:8090/actuator/health
@@ -26,7 +50,7 @@
     - User: postgres
     - Password:
     
-## JDD
+## Datasets
 ### Developer table:
 | id | location | nickname | speciality |
 | :--- | :--- | :--- | :--- |
