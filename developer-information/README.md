@@ -1,7 +1,7 @@
 # Developer Informations Microservice
 
 ## Class Diagram
-![](./img/class-diagram.png)
+![](img/class-diagram.png)
 
 ## Build & Run with Maven
 - Datasource:
@@ -50,7 +50,7 @@
     - GUI connector:
         - uri: localhost:27018
         - user: root
-        - passwrod: root
+        - password: root
         - auth: SCRAM-SHA-1
     - Mongo shell:
         ```sh
@@ -58,7 +58,3 @@
         ```
     
 ## Datasets
-- Insert json file:
-    ```sh
-    mongoimport -h localhost:27018 -d developer-information -c developer-information -u root -p root --authenticationDatabase admin --file data-local.json --jsonArray
-    ```

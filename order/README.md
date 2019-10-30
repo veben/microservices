@@ -1,7 +1,7 @@
 # Order Microservice
 
 ## Class Diagram
-![](./img/class-diagram.png)
+![](img/class-diagram.png)
 
 ## Build & Run with Maven
 - Datasource:

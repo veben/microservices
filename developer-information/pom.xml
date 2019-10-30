@@ -15,8 +15,8 @@
     <artifactId>developer-information</artifactId>
     <version>0.0.1</version>
 
-    <name>Developer informations</name>
-    <description>Developer informations management</description>
+    <name>Developer information's</name>
+    <description>Developer information's management</description>
 
     <properties>
         <java.version>11</java.version>

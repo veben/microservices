@@ -12,7 +12,7 @@ import static lombok.AccessLevel.NONE;
 @Setter
 @EqualsAndHashCode(of = "id")
 @ToString
-@Document
+@Document(collation = "developer-information")
 public class DeveloperInformation {
 
     @Id

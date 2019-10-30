@@ -9,8 +9,10 @@ services:
     ports:
       - 27018:27017
     environment:
-#      - MONGO_INITDB_ROOT_DATABASE=developer-information
       - MONGO_INITDB_ROOT_USERNAME=root
       - MONGO_INITDB_ROOT_PASSWORD=root
-    volumes:
-      - "./mongo/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d"
+
+  # Allow to create collection and insert data at start
+  mongo-seed:
+    build:
+      context: mongo
