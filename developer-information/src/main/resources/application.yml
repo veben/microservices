@@ -7,10 +7,8 @@ spring:
 
   data:
     mongodb:
-      uri: ${mongo.url}
-      username: ${mongo.username}
-      password: ${mongo.password}
-      database: journalCapacite
+      uri: mongodb://${mongo.username}:${mongo.password}@${mongo.uri}:${mongo.port}
+      database: developer-information
 
 # Actuator
 management:

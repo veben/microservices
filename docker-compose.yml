@@ -15,7 +15,7 @@ services:
   developer:
     container_name: developer
     build:
-      context: developer
+      context: .
       args:
         - APP_NAME=developer
         - APP_VERSION=0.0.1
@@ -36,9 +36,35 @@ services:
   order:
     container_name: order
     build:
-      context: order
+      context: .
       args:
         - APP_NAME=order
         - APP_VERSION=0.0.1
     ports:
       - 8091:8091
+
+    ########################## DEVELOPER INFORMATION ##########################
+  developer-information-mongodb:
+    container_name: developer-information-mongodb
+    image: mongo:4.2.1
+    restart: always
+    ports:
+      - 27018:27017
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=root
+
+  # Allow to create collection and insert data at start
+  mongo-seed:
+    build:
+      context: developer-information/mongo
+
+  developer-information:
+    container_name: developer-information
+    build:
+      context: .
+      args:
+        - APP_NAME=developer-information
+        - APP_VERSION=0.0.1
+    ports:
+      - 8092:8092

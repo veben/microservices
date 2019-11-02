@@ -2,16 +2,15 @@ package com.veben.microservices.developer.ext.rest;
 
 import com.veben.microservices.developer.domain.Developer;
 import com.veben.microservices.developer.domain.DeveloperRepository;
+import com.veben.microservices.developer.ext.client.DeveloperInformationService;
+import com.veben.microservices.developer.ext.client.dto.DeveloperInformationDto;
 import com.veben.microservices.developer.ext.rest.dto.DeveloperSearchDto;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.Set;
@@ -25,6 +24,7 @@ import java.util.Set;
 public class DeveloperController {
 
     private final DeveloperRepository developerRepository;
+    private final DeveloperInformationService developerInformationService;
 
     @GetMapping(value = "/developers")
     @ApiOperation(value = "List developers", response = Developer.class, responseContainer = "ResponseEntity")
@@ -45,5 +45,15 @@ public class DeveloperController {
         final Set<String> developersSpecialities = developerRepository.findAllDevelopersSpecialities();
 
         return developersSpecialities.isEmpty() ? ResponseEntity.noContent().build() : ResponseEntity.ok(developersSpecialities);
+    }
+
+    @GetMapping(value = "/developers/{id}/developer-informations")
+    @ApiOperation(value = "Get developer informations for a developer", response = DeveloperInformationDto.class, responseContainer = "ResponseEntity")
+    public ResponseEntity<DeveloperInformationDto> findDeveloperInformationForDeveloper(@PathVariable("id") String id) {
+        log.info("findDeveloperInformationForDeveloper called with params: " + id);
+
+        return developerInformationService.getDeveloperInformationById(id)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.noContent().build());
     }
 }

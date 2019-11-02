@@ -6,7 +6,7 @@ spring:
     name: order
 
   datasource:
-    url: ${database.url}
+    url: jdbc:postgresql://${database.host}:${database.port}/order
     username: ${database.username}
     password: ${database.password}
   jpa:

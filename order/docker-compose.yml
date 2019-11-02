@@ -15,7 +15,7 @@ services:
   order:
     container_name: order
     build:
-      context: .
+      context: ..
       args:
         - APP_NAME=order
         - APP_VERSION=0.0.1

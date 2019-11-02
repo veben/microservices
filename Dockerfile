@@ -5,8 +5,8 @@ ARG APP_NAME
 ENV SPRING_PROFILES_ACTIVE "docker"
 ENV MVN_OPTIONS "clean package -DskipTests"
 
-COPY src /home/app/src
-COPY pom.xml /home/app
+COPY ${APP_NAME}/src /home/app/src
+COPY ${APP_NAME}/pom.xml /home/app
 RUN mvn -f /home/app/pom.xml $MVN_OPTIONS
 
 

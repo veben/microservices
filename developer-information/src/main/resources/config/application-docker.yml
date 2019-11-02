@@ -1,4 +1,5 @@
 mongo:
-  url: mongodb://developer-information-mongodb:27018
+  uri: developer-information-mongodb
   username: root
   password: root
+  port: 27017

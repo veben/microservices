@@ -1,5 +1,6 @@
 database:
-  url: jdbc:postgresql://developer-postgresql:5432/developer
+  host: developer-postgresql
+  port: 5432
   username: postgres
   password:
 

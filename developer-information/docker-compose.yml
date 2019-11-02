@@ -16,3 +16,13 @@ services:
   mongo-seed:
     build:
       context: mongo
+
+  developer-information:
+    container_name: developer-information
+    build:
+      context: ..
+      args:
+        - APP_NAME=developer-information
+        - APP_VERSION=0.0.1
+    ports:
+      - 8092:8092

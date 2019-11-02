@@ -1,5 +1,6 @@
 database:
-  url: jdbc:postgresql://order-postgresql:5432/order
+  host: order-postgresql
+  port: 5432
   username: postgres
   password:
 

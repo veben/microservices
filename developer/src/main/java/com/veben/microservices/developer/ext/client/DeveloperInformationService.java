@@ -16,8 +16,8 @@ public class DeveloperInformationService {
 
     private final RestTemplate restTemplate;
 
-    Optional<DeveloperInformationDto> getDeveloperInformationById(@PathVariable String developerId) {
-        String url = "localhost:8090/api/developer-information/v1/developer-informations/" + developerId;
+    public Optional<DeveloperInformationDto> getDeveloperInformationById(@PathVariable String developerId) {
+        String url = "http://localhost:8092/api/developer-information/v1/developer-informations/" + developerId;
         log.info("findAllOrders called on {}", url);
 
         DeveloperInformationDto result;

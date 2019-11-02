@@ -1,4 +1,5 @@
 mongo:
-  url: mongodb://localhost:27018
+  uri: localhost
   username: root
   password: root
+  port: 27018

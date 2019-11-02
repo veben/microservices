@@ -26,7 +26,7 @@
      ```
 - Build:
     ```sh
-    docker build --tag developer:test --rm=true .
+    docker build --tag developer:test --rm=true ..
     ```
 - Run:
     ```sh
@@ -50,7 +50,7 @@
     - User: postgres
     - Password:
     
-## Datasets
+## Dataset
 ### Developer table:
 | id | location | nickname | speciality |
 | :--- | :--- | :--- | :--- |

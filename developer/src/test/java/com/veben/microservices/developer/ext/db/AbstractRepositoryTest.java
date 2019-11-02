@@ -16,7 +16,7 @@ import javax.validation.constraints.NotNull;
 
 @ExtendWith(SpringExtension.class)
 @DataJpaTest
-@ComponentScan(basePackages= {"com.veben.microservices.developer.ext.dd"})
+@ComponentScan(basePackages= {"com.veben.microservices.developer.ext.db"})
 @Sql(scripts = {"/data/data-local.sql"})
 @ActiveProfiles("local")
 @ContextConfiguration(initializers = AbstractRepositoryTest.Initializer.class)

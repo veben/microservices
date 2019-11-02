@@ -26,7 +26,7 @@
      ```
 - Build:
     ```sh
-    docker build --tag order:test --rm=true .
+    docker build --tag order:test --rm=true ..
     ```
 - Run:
     ```sh
@@ -50,7 +50,7 @@
     - User: postgres
     - Password:
     
-## Datasets
+## Dataset
 ### Passed_order table:
 | id | city | country | number | street | email | name | surname | date |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |

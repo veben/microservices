@@ -12,8 +12,11 @@ import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 
+@SuppressWarnings("SyntaxError")
 @Repository
-public interface JpaDeveloperRepository extends DeveloperRepository, JpaRepository<Developer, UUID> {
+public interface JpaDeveloperRepository extends
+        DeveloperRepository,
+        JpaRepository<Developer, UUID> {
 
     /********************* JPA *********************/
     @Query(value = "select speciality from Developer")

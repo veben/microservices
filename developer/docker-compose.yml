@@ -15,7 +15,7 @@ services:
   developer:
     container_name: developer
     build:
-      context: .
+      context: ..
       args:
         - APP_NAME=developer
         - APP_VERSION=0.0.1

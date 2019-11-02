@@ -1,10 +1,10 @@
 package com.veben.microservices.developerinformation.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
+import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-
-import java.util.UUID;
 
 import static lombok.AccessLevel.NONE;
 
@@ -12,12 +12,15 @@ import static lombok.AccessLevel.NONE;
 @Setter
 @EqualsAndHashCode(of = "id")
 @ToString
-@Document(collation = "developer-information")
+@Document(collection = "developer-information")
 public class DeveloperInformation {
 
     @Id
     @Setter(NONE)
-    private UUID id;
+    @JsonIgnore
+    private ObjectId id;
+
+    private String developerId;
 
     private String about;
     private String websiteUrl;
@@ -34,16 +37,18 @@ public class DeveloperInformation {
     private int publicRepositories;
     private int followers;
 
-    DeveloperInformation() {
-        this.id = UUID.randomUUID();
+    protected DeveloperInformation() {
+        this.id = ObjectId.get();
     }
 
     @Builder
     public DeveloperInformation(
-            String about, String websiteUrl, String stackOverflowUrl, String avatarUrl, int goldBadges, int silverBadges,
-            int bronzeBadges, int reputation, String githubUrl, String name, String company, int publicRepositories, int followers) {
+            String developerId, String about, String websiteUrl, String stackOverflowUrl, String avatarUrl,
+            int goldBadges, int silverBadges, int bronzeBadges, int reputation, String githubUrl, String name,
+            String company, int publicRepositories, int followers) {
         this();
 
+        this.developerId = developerId;
         this.about = about;
         this.websiteUrl = websiteUrl;
         this.stackOverflowUrl = stackOverflowUrl;
