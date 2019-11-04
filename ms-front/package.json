@@ -1,0 +1,67 @@
+{
+  "name": "ms-front",
+  "version": "0.0.0",
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve",
+    "build:prod": "ng build --prod",
+    "test": "ng test --browsers Chrome",
+    "test:ci": "ng test --browsers ChromeHeadlessNoSandbox --watch=false --code-coverage",
+    "e2e": "ng e2e",
+    "eslint": "eslint ./ --ext ts,js,css",
+    "eslint:fix": "eslint ./ --ext ts,js,css --fix",
+    "prettier": "prettier ./**/*.ts",
+    "prettier:format": "prettier ./**/*.ts --write"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged && eslint ./ --ext ts,js,css && ng test --watch=false",
+      "pre-push": "ng build --aot true"
+    }
+  },
+  "private": true,
+  "dependencies": {
+    "@angular/animations": "~8.2.13",
+    "@angular/common": "~8.2.13",
+    "@angular/compiler": "~8.2.13",
+    "@angular/core": "~8.2.13",
+    "@angular/forms": "~8.2.13",
+    "@angular/material": "^8.2.3",
+    "@angular/platform-browser": "~8.2.13",
+    "@angular/platform-browser-dynamic": "~8.2.13",
+    "@angular/router": "~8.2.13",
+    "rxjs": "~6.4.0",
+    "tslib": "^1.10.0",
+    "zone.js": "~0.9.1"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "~0.803.17",
+    "@angular/cli": "~8.3.17",
+    "@angular/compiler-cli": "~8.2.13",
+    "@angular/language-service": "~8.2.13",
+    "@types/jasmine": "~3.3.8",
+    "@types/jasminewd2": "~2.0.3",
+    "@types/node": "~8.9.4",
+    "@typescript-eslint/eslint-plugin": "^2.6.0",
+    "@typescript-eslint/eslint-plugin-tslint": "^2.6.0",
+    "@typescript-eslint/parser": "^2.6.0",
+    "codelyzer": "^5.0.0",
+    "eslint": "^6.6.0",
+    "eslint-config-prettier": "^6.5.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-prettier": "^3.1.1",
+    "husky": "^3.0.9",
+    "jasmine-core": "~3.4.0",
+    "jasmine-spec-reporter": "~4.2.1",
+    "karma": "~4.1.0",
+    "karma-chrome-launcher": "~2.2.0",
+    "karma-coverage-istanbul-reporter": "~2.0.1",
+    "karma-jasmine": "~2.0.1",
+    "karma-jasmine-html-reporter": "^1.4.0",
+    "prettier": "^1.18.2",
+    "pretty-quick": "^2.0.0",
+    "protractor": "~5.4.0",
+    "ts-node": "~7.0.0",
+    "typescript": "~3.5.3"
+  }
+}

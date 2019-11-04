@@ -1,0 +1,8 @@
+.idea/
+.vscode/
+e2e
+node_modules/
+dist/
+src/assets/
+src/envrionments/
+coverage/
