@@ -1,28 +1,48 @@
 # MS front
 
-## Class Diagram
-
-![](img/class-diagram.png)
-
 ## Build & Run with Docker Compose
+
+### Build & Run:
+
+```sh
+docker-compose up --build -d && docker-compose logs -f
+```
+
+### Stop:
+
+```sh
+docker-compose down
+```
 
 ## Build & Run with Docker
 
-## Build & Run with npm
+### Build:
 
-- Dependency installation:
+```sh
+docker build --tag ms-front:test --rm=true .
+```
+
+### Run:
+
+```sh
+docker run -it --name ms-front --publish=80:80 ms-front:test
+```
+
+## Install dependencies & Run with npm
+
+### Install dependencies:
 
 ```sh
 npm install
 ```
 
-- Run:
+### Run:
 
 ```sh
 npm start
 ```
 
-- Build:
+## Build locally:
 
 ```sh
 npm build
@@ -30,6 +50,6 @@ npm build
 
 ## Access
 
-http://localhost:4200
+With `Docker` deployment: http://localhost
 
-## Dataset
+With `Local` deployment: http://localhost:4200

@@ -1,0 +1,9 @@
+version: "3.7"
+services:
+  ########################## MS FRONT ##########################
+  ms-front:
+    container_name: ms-front
+    build:
+      context: .
+    ports:
+      - 80:80

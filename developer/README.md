@@ -6,46 +6,61 @@
 
 ## Build & Run with Docker Compose
 
-- Build & Run:
-  ```sh
-  docker-compose up --build -d && docker-compose logs -f
-  ```
-- Stop:
-  ```sh
-  docker-compose down
-  ```
+### Build & Run:
+
+```sh
+docker-compose up --build -d && docker-compose logs -f
+```
+
+### Stop:
+
+```sh
+docker-compose down
+```
 
 ## Build & Run with Docker
 
-- Datasource:
-  > Launch PostgreSQL in a Docker container with:
-  ```sh
-   docker run --name developer-postgresql -p 5433:5432 -e POSTGRES_DB=developer postgres:11.5-alpine
-  ```
-- Build:
-  ```sh
-  docker build --tag developer:test --rm=true ..
-  ```
-- Run:
-  ```sh
-  docker run -it --name developer --publish=8090:8090 developer:test
-  ```
+### Datasource:
+
+> Launch PostgreSQL in a Docker container with:
+
+```sh
+docker run --name developer-postgresql -p 5433:5432 -e POSTGRES_DB=developer postgres:11.5-alpine
+```
+
+### Build:
+
+```sh
+docker build --tag developer:test --rm=true ..
+```
+
+### Run:
+
+```sh
+docker run -it --name developer --publish=8090:8090 developer:test
+```
 
 ## Build & Run with Maven
 
-- Datasource:
-  > Launch PostgreSQL in a Docker container with:
-  ```sh
-   docker run --name developer-postgresql -p 5433:5432 -e POSTGRES_DB=developer postgres:11.5-alpine
-  ```
-- Build:
-  ```sh
-  mvn clean install
-  ```
-- Run:
-  ```sh
-  mvn spring-boot:run -Dspring-boot.run.profiles=local
-  ```
+### Datasource:
+
+> Launch PostgreSQL in a Docker container with:
+
+```sh
+docker run --name developer-postgresql -p 5433:5432 -e POSTGRES_DB=developer postgres:11.5-alpine
+```
+
+### Build:
+
+```sh
+mvn clean install
+```
+
+### Run:
+
+```sh
+mvn spring-boot:run -Dspring-boot.run.profiles=local
+```
 
 ## Access
 

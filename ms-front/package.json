@@ -4,14 +4,14 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+    "build": "ng build",
     "build:prod": "ng build --prod",
     "test": "ng test --browsers Chrome",
     "test:ci": "ng test --browsers ChromeHeadlessNoSandbox --watch=false --code-coverage",
     "e2e": "ng e2e",
     "eslint": "eslint ./ --ext ts,js,css",
     "eslint:fix": "eslint ./ --ext ts,js,css --fix",
-    "prettier": "prettier ./**/*.ts",
-    "prettier:format": "prettier ./**/*.ts --write"
+    "format:all": "prettier --config ./.prettierrc --write \"src/{app,environments,assets}/**/*{.ts,.js,.json,.css,.scss,.html}\""
   },
   "husky": {
     "hooks": {

@@ -6,55 +6,75 @@
 
 ## Build & Run with Docker Compose
 
-- Build & Run:
-  ```sh
-  docker-compose up --build -d && docker-compose logs -f
-  ```
-- Stop:
-  ```sh
-  docker-compose down
-  ```
+### Build & Run:
+
+```sh
+docker-compose up --build -d && docker-compose logs -f
+```
+
+### Stop:
+
+```sh
+docker-compose down
+```
 
 ## Build & Run with Docker
 
-- Datasource:
-  > Launch MongoDb in a Docker container with:
-  ```sh
-  docker run --name developer-information-mongodb -p 27018:27017 -e MONGO_INITDB_ROOT_USERNAME=root -e MONGO_INITDB_ROOT_PASSWORD=root mongo:4.2.1
-  ```
-- Add dataset:
-  > Connect to mongo
-  ```sh
-  docker exec -it developer-information-mongodb mongo
-  ```
-  > In another shell, insert data
-  ```sh
-  docker cp mongo/data-local.json developer-information-mongodb:/data-local.json && docker exec developer-information-mongodb mongoimport -d developer-information -c developer-information -u root -p root --authenticationDatabase admin --file /data-local.json --jsonArray
-  ```
-- Build:
-  ```sh
-  docker build --tag developer-information:test --rm=true ..
-  ```
-- Run:
-  ```sh
-  docker run -it --name developer-information --publish=8092:8092 developer-information:test
-  ```
+### Datasource:
+
+> Launch MongoDb in a Docker container with:
+
+```sh
+docker run --name developer-information-mongodb -p 27018:27017 -e MONGO_INITDB_ROOT_USERNAME=root -e MONGO_INITDB_ROOT_PASSWORD=root mongo:4.2.1
+```
+
+### Add dataset:
+
+> Connect to mongo
+
+```sh
+docker exec -it developer-information-mongodb mongo
+```
+
+> In another shell, insert data
+
+```sh
+docker cp mongo/data-local.json developer-information-mongodb:/data-local.json && docker exec developer-information-mongodb mongoimport -d developer-information -c developer-information -u root -p root --authenticationDatabase admin --file /data-local.json --jsonArray
+```
+
+### Build:
+
+```sh
+docker build --tag developer-information:test --rm=true ..
+```
+
+### Run:
+
+```sh
+docker run -it --name developer-information --publish=8092:8092 developer-information:test
+```
 
 ## Build & Run with Maven
 
-- Datasource:
-  > Launch MongoDb in a Docker container with:
-  ```sh
-   docker run --name developer-information-mongodb -p 27018:27017 -e MONGO_INITDB_ROOT_USERNAME=root -e MONGO_INITDB_ROOT_PASSWORD=root mongo:4.2.1
-  ```
-- Build:
-  ```sh
-  mvn clean install
-  ```
-- Run:
-  ```sh
-  mvn spring-boot:run -Dspring-boot.run.profiles=local
-  ```
+### Datasource:
+
+> Launch MongoDb in a Docker container with:
+
+```sh
+docker run --name developer-information-mongodb -p 27018:27017 -e MONGO_INITDB_ROOT_USERNAME=root -e MONGO_INITDB_ROOT_PASSWORD=root mongo:4.2.1
+```
+
+### Build:
+
+```sh
+mvn clean install
+```
+
+### Run:
+
+```sh
+mvn spring-boot:run -Dspring-boot.run.profiles=local
+```
 
 ## Access
 

@@ -10,7 +10,7 @@ COPY ${APP_NAME}/pom.xml /home/app
 RUN mvn -f /home/app/pom.xml $MVN_OPTIONS
 
 
-## Package stage
+## Package & Run stage
 FROM openjdk:11-jre-slim
 
 ARG APP_NAME

@@ -7,6 +7,7 @@
 
 - [ ] [Tools Setup](#tools-setup)
 - [ ] [Build & Launch](#build-launch)
+- [ ] [Browse to the app](#browse-to-the-app)
 - [ ] [Stop & Clean](#stop-clean)
 - [ ] [Microservice Developer in depth](developer/README.md)
 - [ ] [Microservice Developer Informations in depth](developer-information/README.md)
@@ -38,24 +39,31 @@
 
 ## 🔧 Build & 🚀 Launch
 
-You can manage the whole project with **Docker Compose** using just few commands
+To manage the whole project with **Docker Compose** using just few commands
 
-> To build images and start containers:
+> ⚠ The first one build is very long
 
 ```sh
  docker-compose up --build -d && docker-compose logs -f
 ```
 
+## 💻 Browse to the app
+
+http://localhost
+
 ## ✋ Stop & 🚿 Clean
 
-> To stop and remove containers define in the `docker-compose.yml` file
+To stop and remove containers define in the `docker-compose.yml` file
 
 ```sh
  docker-compose down
 ```
 
-> To stop and remove all containers and remove all images
-> (have to be launch with Git Bash or Bash for Windows):
+To stop and remove all containers and images
+
+> ⚠ Be prudent with this command
+
+> have to be launch with **Git Bash** or **Bash for Windows**
 
 ```sh
  docker stop $(docker ps -a -q) && docker rm $(docker ps -a -q) && docker image prune -f
@@ -63,7 +71,7 @@ You can manage the whole project with **Docker Compose** using just few commands
 
 ### 🛠 Troubleshooting
 
-- The following ports have not to be in use: 8090, 8091, 8092, 5433, 5434, 27018
+The following ports have not to be in use: 80, 8090, 8091, 8092, 5433, 5434, 27018
 
 ### 💼 Tools to manage without docker
 
@@ -109,7 +117,7 @@ You can manage the whole project with **Docker Compose** using just few commands
 
 #### ⛏ Angular CLI: 8.3.17
 
-- Download & install globally:
+Download & install globally:
 
 ```sh
 npm install -g @angular/cli

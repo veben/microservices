@@ -1,7 +1,6 @@
-version: '3.7'
+version: "3.7"
 services:
-
-########################## DEVELOPER ##########################
+  ########################## DEVELOPER ##########################
   developer-postgresql:
     container_name: developer-postgresql
     image: postgres:11.5-alpine
@@ -43,7 +42,7 @@ services:
     ports:
       - 8091:8091
 
-    ########################## DEVELOPER INFORMATION ##########################
+  ########################## DEVELOPER INFORMATION ##########################
   developer-information-mongodb:
     container_name: developer-information-mongodb
     image: mongo:4.2.1
@@ -68,3 +67,11 @@ services:
         - APP_VERSION=0.0.1
     ports:
       - 8092:8092
+
+  ########################## MS FRONT ##########################
+  ms-front:
+    container_name: ms-front
+    build:
+      context: ./ms-front
+    ports:
+      - 80:80
