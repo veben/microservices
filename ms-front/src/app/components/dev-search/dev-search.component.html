@@ -1,0 +1,25 @@
+<form [formGroup]="searchForm" (ngSubmit)="onSubmit()" class="filter" fxLayout="row" fxLayoutGap="1.2vw">
+  <mat-form-field appearance="outline" fxLayout="column">
+    <mat-hint>Nickname</mat-hint>
+    <mat-label>Nickname (e.g. veben)</mat-label>
+    <input matInput placeholder="Nickname" formControlName="nickname" />
+    <mat-icon matSuffix>face</mat-icon>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" fxLayout="column">
+    <mat-hint>Location</mat-hint>
+    <mat-label>Location (e.g. France)</mat-label>
+    <input matInput placeholder="Location" formControlName="location" />
+    <mat-icon matSuffix>home</mat-icon>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" fxLayout="column">
+    <mat-hint>Speciality</mat-hint>
+    <mat-label>Speciality (e.g. java)</mat-label>
+    <mat-select placeholder="Speciality" formControlName="speciality">
+      <mat-option *ngFor="let speciality of developerSpecialities" [value]="speciality">{{ speciality }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <button mat-fab color="accent">Submit</button>
+</form>

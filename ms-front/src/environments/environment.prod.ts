@@ -1,3 +1,9 @@
 export const environment = {
-  production: true
+  production: true,
+  pathConfig: "./assets/config/",
+  APP_SETTINGS: {
+    path: {
+      msDevPath: ""
+    }
+  }
 };

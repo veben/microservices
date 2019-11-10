@@ -1,0 +1,71 @@
+/* cvt: Convert pixel to vmin */
+@function cvt($value) {
+  @return ($value / 7.7) * 1vmin;
+}
+
+.snackbar-container {
+  align-items: center;
+  height: 100%;
+  padding: 1.5vmin;
+
+  .mat-icon {
+    height: 2.5vh;
+    width: 2.5vw;
+    color: black;
+  }
+}
+
+.snackbar {
+  height: cvt(44);
+  box-shadow: 0 5px 6px -3px rgba(31, 38, 62, 0.1), 0 3px 16px 2px rgba(31, 38, 62, 0.06), 0 9px 12px 1px rgba(31, 38, 62, 0.07);
+  border-radius: 50px;
+  position: fixed;
+  left: 40%;
+  padding: 0;
+  min-height: auto;
+  min-width: auto !important;
+  max-width: none !important;
+  width: auto !important;
+}
+
+.success {
+  background-color: #e2f6f4;
+  bottom: cvt(58);
+}
+
+.warning {
+  background-color: #fdefd9;
+  bottom: cvt(58);
+}
+
+.error {
+  background-color: #fbe2e1;
+  bottom: cvt(58);
+}
+.info {
+  background-color: #ffffff;
+  bottom: cvt(58);
+}
+
+.snackbar-text {
+  font-size: cvt(14);
+  opacity: 0.87;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.43;
+  letter-spacing: 0.3px;
+}
+
+.snackbar-text-success {
+  color: #37bfb1;
+}
+.snackbar-text-warning {
+  color: #f39200;
+}
+.snackbar-text-error {
+  color: #e53935;
+}
+.snackbar-text-info {
+  color: #1f263e;
+}

@@ -9,6 +9,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,26 +24,39 @@ import java.util.Set;
 @Slf4j
 public class DeveloperController {
 
+    private static final String DATABASE_ERROR_MESSAGE = "Developer Database down";
+
     private final DeveloperRepository developerRepository;
     private final DeveloperInformationService developerInformationService;
 
     @GetMapping(value = "/developers")
     @ApiOperation(value = "List developers", response = Developer.class, responseContainer = "ResponseEntity")
-    public ResponseEntity<Set<Developer>> findAllDevelopers(@Valid DeveloperSearchDto developerSearchDto) {
+    public ResponseEntity findAllDevelopers(@Valid DeveloperSearchDto developerSearchDto) {
         log.info("findAllDevelopers called with params: " + developerSearchDto.toString());
 
-        final Set<Developer> developers = developerRepository
-                .findDevelopersByLocationAndSpeciality(developerSearchDto.toDeveloperSearchCriteria());
+        final Set<Developer> developers;
+
+        try {
+            developers = developerRepository.findDevelopersByLocationAndSpeciality(developerSearchDto.toDeveloperSearchCriteria());
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE).body(DATABASE_ERROR_MESSAGE);
+        }
 
         return developers.isEmpty() ? ResponseEntity.noContent().build() : ResponseEntity.ok(developers);
     }
 
     @GetMapping(value = "/developers/list-specialities")
     @ApiOperation(value = "List all developer specialities", response = String.class, responseContainer = "ResponseEntity")
-    public ResponseEntity<Set<String>> findAllDevelopersSpecialities() {
+    public ResponseEntity findAllDevelopersSpecialities() {
         log.info("findAllDevelopersSpecialities called");
 
-        final Set<String> developersSpecialities = developerRepository.findAllDevelopersSpecialities();
+        final Set<String> developersSpecialities;
+
+        try {
+            developersSpecialities = developerRepository.findAllDevelopersSpecialities();
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE).body(DATABASE_ERROR_MESSAGE);
+        }
 
         return developersSpecialities.isEmpty() ? ResponseEntity.noContent().build() : ResponseEntity.ok(developersSpecialities);
     }

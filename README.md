@@ -8,6 +8,7 @@
 - [ ] [Tools Setup](#tools-setup)
 - [ ] [Build & Launch](#build-launch)
 - [ ] [Browse to the app](#browse-to-the-app)
+- [ ] [Manage containers and other Docker things](#manage-containers-and-other-docker-things)
 - [ ] [Stop & Clean](#stop-clean)
 - [ ] [Microservice Developer in depth](developer/README.md)
 - [ ] [Microservice Developer Informations in depth](developer-information/README.md)
@@ -44,34 +45,64 @@ To manage the whole project with **Docker Compose** using just few commands
 > ⚠ The first one build is very long
 
 ```sh
- docker-compose up --build -d && docker-compose logs -f
+ docker-compose up
 ```
 
 ## 💻 Browse to the app
 
 http://localhost
 
+## 🐳 Manage containers and other Docker things
+
+> ⚠ Once everything is up, you can manage containers with **Portainer**
+
+http://localhost:9000
+
 ## ✋ Stop & 🚿 Clean
 
-To stop and remove containers define in the `docker-compose.yml` file
+To stop all containers:
+
+> 🛈 Have to be launch with **Git Bash** or **Bash for Windows**
 
 ```sh
- docker-compose down
+ bin\stop-all-containers.sh
 ```
 
-To stop and remove all containers and images
+To stop and remove everything (containers, images, volumes, networks, cash):
 
 > ⚠ Be prudent with this command
 
-> have to be launch with **Git Bash** or **Bash for Windows**
+> 🛈 Have to be launch with **Git Bash** or **Bash for Windows**
 
 ```sh
- docker stop $(docker ps -a -q) && docker rm $(docker ps -a -q) && docker image prune -f
+ bin\clean-everything.sh
 ```
 
 ### 🛠 Troubleshooting
 
-The following ports have not to be in use: 80, 8090, 8091, 8092, 5433, 5434, 27018
+#### Warning during the build
+
+There is some warning with `fsevent` during the buils. Just ignore them
+
+#### First launch of `Portainer`
+
+It may occurs some errors when opening Portainer (_http://localhost:9000_) the first time after the launch.
+Just refresh the page. Then you have to define the user password.
+
+#### One of the services connot start
+
+It may occurs if one of the following ports is in use.
+They are needed as followed:
+
+- **80**: for Front App
+- **8090**: for Developer MS
+- **8091**: for Order MS
+- **8092**: for Developer Information MS
+- **5433**: for Developer PostgreSQL database
+- **5434**: for Order PostgreSQL database
+- **27018**: for Developer Information MongoDb database
+- **8000**: for Portainer Agent
+- **9000**: for Portainer Server
 
 ### 💼 Tools to manage without docker
 

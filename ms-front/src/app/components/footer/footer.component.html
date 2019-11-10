@@ -1,0 +1,16 @@
+<mat-toolbar class="toolbar">
+  <span class="fill-space"></span>
+  <a [href]="stackoverflowUrl" target="_blank">
+    <img src="../../../assets/img/stackoverflow.png" alt="" matTooltip="StackOverflow" matTooltipPosition="above" />
+  </a>
+  <a [href]="githubUrl" target="_blank">
+    <img src="../../../assets/img/github.png" alt="" matTooltip="GitHub" matTooltipPosition="above" />
+  </a>
+  <a [href]="linkedinUrl" target="_blank">
+    <img src="../../../assets/img/linkedin.png" alt="" matTooltip="Linkedin" matTooltipPosition="above" />
+  </a>
+  <span class="fill-space"></span>
+</mat-toolbar>
+<mat-list [ngStyle]="{ display: 'none' }">
+  <mat-list-item></mat-list-item>
+</mat-list>
