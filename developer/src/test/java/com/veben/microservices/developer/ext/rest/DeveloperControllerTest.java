@@ -2,6 +2,7 @@ package com.veben.microservices.developer.ext.rest;
 
 import com.veben.microservices.developer.domain.Developer;
 import com.veben.microservices.developer.domain.DeveloperRepository;
+import com.veben.microservices.developer.ext.client.DeveloperInformationService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +29,8 @@ class DeveloperControllerTest {
 
     @MockBean
     private DeveloperRepository developerRepository;
+    @MockBean
+    private DeveloperInformationService developerInformationService;
 
     @Autowired
     private MockMvc mockMvc;
@@ -60,7 +63,7 @@ class DeveloperControllerTest {
     void should_return_ok_developers_when_data_developer() throws Exception {
         // given
         when(developerRepository.findDevelopersByLocationAndSpeciality(any()))
-                .thenReturn(Set.of(new Developer("veben", "France", "java")));
+                .thenReturn(Set.of(new Developer("veben", "France", "java", "")));
 
         // when
         mockMvc.perform(get(DEVELOPER_PATH))

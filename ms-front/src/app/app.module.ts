@@ -18,12 +18,23 @@ import { ReactiveFormsModule } from "@angular/forms";
 import { MatButtonModule } from "@angular/material/button";
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { ConfigService } from "./services/config/config.service";
-import { HttpClientModule } from "@angular/common/http";
+import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
 import { MatSnackBarModule } from "@angular/material/snack-bar";
 import { SnackbarComponent } from "./components/snackbar/snackbar.component";
+import { SpinnerComponent } from "./components/spinner/spinner.component";
+import { SpinnerInterceptor } from "./services/spinner/spinner.interceptor";
+import { DevDisplayComponent } from "./components/dev-display/dev-display.component";
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, DevSearchComponent, FooterComponent, SnackbarComponent],
+  declarations: [
+    AppComponent,
+    HeaderComponent,
+    DevSearchComponent,
+    FooterComponent,
+    SnackbarComponent,
+    SpinnerComponent,
+    DevDisplayComponent
+  ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -48,6 +59,11 @@ import { SnackbarComponent } from "./components/snackbar/snackbar.component";
       // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
       useFactory: (config: ConfigService) => () => config.loadAppConfig(),
       deps: [ConfigService],
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: SpinnerInterceptor,
       multi: true
     }
   ],

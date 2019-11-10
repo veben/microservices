@@ -1,7 +1,10 @@
+<ms-front-spinner></ms-front-spinner>
 <div class="container">
   <ms-front-header class="header"></ms-front-header>
 
-  <ms-front-dev-search></ms-front-dev-search>
+  <ms-front-dev-search [developerSpecialities]="developerSpecialities" (search)="onSearch($event)"></ms-front-dev-search>
+
+  <ms-front-dev-display *ngIf="developers" [developers]="developers"></ms-front-dev-display>
 
   <ms-front-footer class="footer"></ms-front-footer>
 </div>

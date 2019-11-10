@@ -53,6 +53,19 @@ class JpaDeveloperRepositoryTest extends AbstractRepositoryTest {
     }
 
     @Test
+    void should_find_developer_with_similar_speciality() {
+        // given
+        DeveloperSearchCriteria criteria = new DeveloperSearchCriteria()
+                .speciality("c++");
+
+        // when
+        Set<Developer> developersBySpeciality = jpaDeveloperRepository.findDevelopersByLocationAndSpeciality(criteria);
+
+        // then
+        assertThat(developersBySpeciality).isNotEmpty();
+    }
+
+    @Test
     void should_find_developer_with_similar_nickname_speciality_and_location() {
         // given
         DeveloperSearchCriteria criteria = new DeveloperSearchCriteria()

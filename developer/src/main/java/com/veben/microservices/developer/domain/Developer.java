@@ -27,15 +27,17 @@ public class Developer {
     private String nickname;
     private String location;
     private String speciality;
+    private String avatar;
 
     protected Developer() {
         this.id = UUID.randomUUID();
     }
 
-    public Developer(String nickname, String location, String speciality) {
+    public Developer(String nickname, String location, String speciality, String avatar) {
         this();
         this.nickname = nickname;
         this.location = location;
         this.speciality = speciality;
+        this.avatar = avatar;
     }
 }

@@ -1,0 +1,23 @@
+.dev-display {
+  margin: 0 25% 0 25%;
+}
+
+.user {
+  border: 1.5px solid #ff4081;
+  cursor: pointer;
+  padding: 1em;
+  margin: 1vw 1vw 1vw 1vw;
+  width: 6.8vw;
+}
+
+.img_container img {
+  width: 6.8vw;
+}
+
+.nickname_container {
+  font-size: 1vw;
+}
+
+.user:hover {
+  box-shadow: 1px 2px 3px #ccc;
+}
