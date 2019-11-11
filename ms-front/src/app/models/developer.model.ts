@@ -3,4 +3,5 @@ export interface Developer {
   nickname?: string;
   location?: string;
   speciality?: string;
+  avatar?: string;
 }

@@ -1,7 +1,7 @@
-<div class="dev-display" fxLayout="row wrap" fxLayout.xs="column wrap">
-  <div class="user" *ngFor="let developer of developers">
+<div class="dev-display" fxLayout="row wrap">
+  <div class="user" *ngFor="let developer of developers" (click)="onDevClick(developer.id)">
     <div class="img_container">
-      <img src="../../../assets/img/developer.png" alt="../../../assets/img/developer.png" class="img-circle" />
+      <img [src]="developer.avatar" alt="../../../assets/img/developer.png" />
     </div>
     <div class="nickname_container">
       {{ developer.nickname }}

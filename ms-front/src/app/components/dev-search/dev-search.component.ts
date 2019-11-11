@@ -9,7 +9,7 @@ import { DeveloperSearchDto } from "../../models/developer-search-dto.model";
 })
 export class DevSearchComponent implements OnInit {
   @Input() public developerSpecialities: string[] = [];
-  @Output() public search: EventEmitter<DeveloperSearchDto> = new EventEmitter<DeveloperSearchDto>();
+  @Output() public devSearchDtoEmitter: EventEmitter<DeveloperSearchDto> = new EventEmitter<DeveloperSearchDto>();
 
   searchForm: FormGroup;
 
@@ -34,6 +34,6 @@ export class DevSearchComponent implements OnInit {
       speciality: this.f.speciality.value
     };
 
-    this.search.emit(developerSearchDto);
+    this.devSearchDtoEmitter.emit(developerSearchDto);
   }
 }

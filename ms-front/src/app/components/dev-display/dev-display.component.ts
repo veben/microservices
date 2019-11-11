@@ -1,4 +1,4 @@
-import { Component, Input } from "@angular/core";
+import { Component, EventEmitter, Input, Output } from "@angular/core";
 import { Developer } from "../../models/developer.model";
 
 @Component({
@@ -8,6 +8,11 @@ import { Developer } from "../../models/developer.model";
 })
 export class DevDisplayComponent {
   @Input() public developers: Developer[] = [];
+  @Output() public devIdEmitter: EventEmitter<string> = new EventEmitter<string>();
 
   constructor() {}
+
+  onDevClick(id: string): void {
+    this.devIdEmitter.emit(id);
+  }
 }

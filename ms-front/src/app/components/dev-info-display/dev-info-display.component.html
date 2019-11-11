@@ -1,0 +1,52 @@
+<div class="dev-info-display" *ngIf="developerInformations">
+  <div class="details">
+    <img class="circle-image" [src]="developerInformations.avatarUrl" alt="../../../assets/img/developer.png" />
+
+    <div class="name" *ngIf="developerInformations.name">
+      <h3>{{ developerInformations.name }}</h3>
+    </div>
+    <hr *ngIf="developerInformations.name" />
+
+    <div class="info-line" *ngIf="developerInformations.about">{{ developerInformations.about }}</div>
+    <hr *ngIf="developerInformations.about" />
+
+    <div class="info-line" *ngIf="developerInformations.company">
+      Company: <strong>{{ developerInformations.company }}</strong>
+    </div>
+    <hr *ngIf="developerInformations.company" />
+
+    <div class="info-line" *ngIf="developerInformations.websiteUrl">
+      <a [href]="developerInformations.websiteUrl" target="_blank">{{ developerInformations.websiteUrl }}</a>
+    </div>
+    <hr *ngIf="developerInformations.websiteUrl" />
+
+    <div class="info-line" fxLayout="row wrap" *ngIf="developerInformations.stackOverflowUrl">
+      <a [href]="developerInformations.stackOverflowUrl" target="_blank">
+        <img src="../../../assets/img/stackoverflow.png" alt="" matTooltip="StackOverflow" matTooltipPosition="above" />
+      </a>
+      <span class="badge gold" *ngIf="developerInformations.goldBadges">
+        <img src="../../../assets/img/gold.png" alt="" /><strong>{{ developerInformations.goldBadges }}</strong>
+      </span>
+      <span class="badge silver" *ngIf="developerInformations.silverBadges">
+        <img src="../../../assets/img/silver.png" alt="" /><strong>{{ developerInformations.silverBadges }}</strong>
+      </span>
+      <span class="badge bronze" *ngIf="developerInformations.bronzeBadges">
+        <img src="../../../assets/img/bronze.png" alt="" />
+        <strong>{{ developerInformations.bronzeBadges }}</strong>
+      </span>
+    </div>
+    <hr *ngIf="developerInformations.stackOverflowUrl" />
+
+    <div class="info-line github-info" *ngIf="developerInformations.githubUrl">
+      <a [href]="developerInformations.githubUrl" target="_blank">
+        <img src="../../../assets/img/github.png" alt="" matTooltip="Github" matTooltipPosition="above" />
+      </a>
+      <span *ngIf="developerInformations.publicRepositories" class="github-elt"
+        >Gists: <strong>{{ developerInformations.publicRepositories }}</strong></span
+      >
+      <span *ngIf="developerInformations.followers" class="github-elt"
+        >Followers: <strong>{{ developerInformations.followers }}</strong></span
+      >
+    </div>
+  </div>
+</div>

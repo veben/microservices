@@ -24,6 +24,7 @@ import { SnackbarComponent } from "./components/snackbar/snackbar.component";
 import { SpinnerComponent } from "./components/spinner/spinner.component";
 import { SpinnerInterceptor } from "./services/spinner/spinner.interceptor";
 import { DevDisplayComponent } from "./components/dev-display/dev-display.component";
+import { DevInfoDisplayComponent } from "./components/dev-info-display/dev-info-display.component";
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { DevDisplayComponent } from "./components/dev-display/dev-display.compon
     FooterComponent,
     SnackbarComponent,
     SpinnerComponent,
-    DevDisplayComponent
+    DevDisplayComponent,
+    DevInfoDisplayComponent
   ],
   imports: [
     BrowserModule,

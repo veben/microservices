@@ -19,8 +19,8 @@ describe("SnackbarService", () => {
   it("should create an success message", () => {
     const service: SnackbarService = TestBed.get(SnackbarService);
     const spy = spyOn(service, "showSnackBar");
-    service.showSuccess("succes");
-    expect(spy).toHaveBeenCalledWith({ type: SnackBarType.SUCCESS, text: "succes" });
+    service.showSuccess("success");
+    expect(spy).toHaveBeenCalledWith({ type: SnackBarType.SUCCESS, text: "success" });
   });
 
   it("should create an error message", () => {

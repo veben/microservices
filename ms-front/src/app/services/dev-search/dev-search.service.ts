@@ -7,6 +7,7 @@ import { HttpParamsBuilder } from "../../utils/http-params-builder";
 import { catchError } from "rxjs/operators";
 import { ManageErrorService } from "../manage-error/manage-error.service";
 import { Developer } from "../../models/developer.model";
+import { DeveloperInformation } from "../../models/developer-information.model";
 
 @Injectable({
   providedIn: "root"
@@ -38,9 +39,14 @@ export class DevSearchService {
     return this.http.get(url, { headers: this.headers, params });
   }
 
+  public getDeveloperInformations(developerId: string): Observable<any> {
+    const url = this.baseUrl + "/developers/" + developerId + "/developer-informations";
+    return this.http.get(url, { headers: this.headers });
+  }
+
   // **********************************************************************************************************
 
-  public loadDeveloperSpecilities(): Observable<string[]> {
+  public loadDeveloperSpecialities(): Observable<string[]> {
     return this.getDeveloperSpecialities().pipe(
       catchError((err: HttpErrorResponse) => {
         this.manageErrorService.serviceBackErrorLogging(err);
@@ -51,6 +57,15 @@ export class DevSearchService {
 
   public loadDevelopers(developerSearchSto: DeveloperSearchDto): Observable<Developer[]> {
     return this.getDevelopers(developerSearchSto).pipe(
+      catchError((err: HttpErrorResponse) => {
+        this.manageErrorService.serviceBackErrorLogging(err);
+        return throwError(err);
+      })
+    );
+  }
+
+  public loadDeveloperInformations(developerId: string): Observable<DeveloperInformation> {
+    return this.getDeveloperInformations(developerId).pipe(
       catchError((err: HttpErrorResponse) => {
         this.manageErrorService.serviceBackErrorLogging(err);
         return throwError(err);

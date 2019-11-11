@@ -4,6 +4,9 @@ database:
   username: postgres
   password:
 
+developer-information:
+  host: developer-information
+
 spring:
   jpa:
     show-sql: true

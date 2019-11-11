@@ -17,6 +17,7 @@
     <mat-hint>Speciality</mat-hint>
     <mat-label>Speciality (e.g. java)</mat-label>
     <mat-select placeholder="Speciality" formControlName="speciality">
+      <mat-option (click)="f.speciality.reset()">(none)</mat-option>
       <mat-option *ngFor="let speciality of developerSpecialities" [value]="speciality">{{ speciality }}</mat-option>
     </mat-select>
   </mat-form-field>

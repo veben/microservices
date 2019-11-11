@@ -2,9 +2,19 @@
 <div class="container">
   <ms-front-header class="header"></ms-front-header>
 
-  <ms-front-dev-search [developerSpecialities]="developerSpecialities" (search)="onSearch($event)"></ms-front-dev-search>
+  <ms-front-dev-search [developerSpecialities]="developerSpecialities" (devSearchDtoEmitter)="onSearchDev($event)"></ms-front-dev-search>
 
-  <ms-front-dev-display *ngIf="developers" [developers]="developers"></ms-front-dev-display>
+  <div class="display">
+    <div class="dev" fxFlex="65vw">
+      <ms-front-dev-display *ngIf="developers" [developers]="developers" (devIdEmitter)="onSearchDevInfo($event)" fxLayout="column">
+      </ms-front-dev-display>
+    </div>
+
+    <div class="dev-info" fxFlex="20vw">
+      <ms-front-dev-info-display *ngIf="developerInformations" [developerInformations]="developerInformations" fxLayout="column">
+      </ms-front-dev-info-display>
+    </div>
+  </div>
 
   <ms-front-footer class="footer"></ms-front-footer>
 </div>

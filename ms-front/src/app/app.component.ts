@@ -4,6 +4,7 @@ import { HttpErrorResponse } from "@angular/common/http";
 import { DevSearchService } from "./services/dev-search/dev-search.service";
 import { Developer } from "./models/developer.model";
 import { ManageErrorService } from "./services/manage-error/manage-error.service";
+import { DeveloperInformation } from "./models/developer-information.model";
 
 @Component({
   selector: "ms-front-root",
@@ -11,23 +12,37 @@ import { ManageErrorService } from "./services/manage-error/manage-error.service
   styleUrls: ["./app.component.scss"]
 })
 export class AppComponent implements OnInit {
-  developers: Developer[];
   developerSpecialities: string[];
+  developers: Developer[];
+  developerInformations: DeveloperInformation;
 
-  constructor(private devService: DevSearchService, private manageErrorService: ManageErrorService) {}
+  constructor(private developerService: DevSearchService, private manageErrorService: ManageErrorService) {}
 
   ngOnInit(): void {
-    this.devService
-      .loadDeveloperSpecilities()
+    this.developerService
+      .loadDeveloperSpecialities()
       .subscribe(
         data => (this.developerSpecialities = data),
         (err: HttpErrorResponse) => this.manageErrorService.serviceBackErrorDisplaying(err)
       );
   }
 
-  public onSearch(developerSearchDto: DeveloperSearchDto): void {
-    this.devService
-      .loadDevelopers(developerSearchDto)
-      .subscribe(data => (this.developers = data), (err: HttpErrorResponse) => this.manageErrorService.serviceBackErrorDisplaying(err));
+  public onSearchDev(developerSearchDto: DeveloperSearchDto): void {
+    this.developerService.loadDevelopers(developerSearchDto).subscribe(
+      data => {
+        this.developers = data;
+        this.developerInformations = null;
+      },
+      (err: HttpErrorResponse) => this.manageErrorService.serviceBackErrorDisplaying(err)
+    );
+  }
+
+  public onSearchDevInfo(developerId: string): void {
+    this.developerService.loadDeveloperInformations(developerId).subscribe(
+      data => {
+        this.developerInformations = data;
+      },
+      (err: HttpErrorResponse) => this.manageErrorService.serviceBackErrorDisplaying(err)
+    );
   }
 }
