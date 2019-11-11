@@ -14,6 +14,7 @@ import { DeveloperInformation } from "./models/developer-information.model";
 export class AppComponent implements OnInit {
   developerSpecialities: string[];
   developers: Developer[];
+  searchedDeveloper: Developer;
   developerInformations: DeveloperInformation;
 
   constructor(private developerService: DevSearchService, private manageErrorService: ManageErrorService) {}
@@ -37,9 +38,10 @@ export class AppComponent implements OnInit {
     );
   }
 
-  public onSearchDevInfo(developerId: string): void {
-    this.developerService.loadDeveloperInformations(developerId).subscribe(
+  public onSearchDevInfo(developer: Developer): void {
+    this.developerService.loadDeveloperInformations(developer.id).subscribe(
       data => {
+        this.searchedDeveloper = developer;
         this.developerInformations = data;
       },
       (err: HttpErrorResponse) => this.manageErrorService.serviceBackErrorDisplaying(err)

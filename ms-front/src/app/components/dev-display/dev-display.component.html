@@ -1,5 +1,5 @@
 <div class="dev-display" fxLayout="row wrap">
-  <div class="user" *ngFor="let developer of developers" (click)="onDevClick(developer.id)">
+  <div class="user" *ngFor="let developer of developers" (click)="onDevClick(developer)">
     <div class="img_container">
       <img [src]="developer.avatar" alt="../../../assets/img/developer.png" />
     </div>

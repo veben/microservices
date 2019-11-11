@@ -8,11 +8,11 @@ import { Developer } from "../../models/developer.model";
 })
 export class DevDisplayComponent {
   @Input() public developers: Developer[] = [];
-  @Output() public devIdEmitter: EventEmitter<string> = new EventEmitter<string>();
+  @Output() public developerEmitter: EventEmitter<Developer> = new EventEmitter<Developer>();
 
   constructor() {}
 
-  onDevClick(id: string): void {
-    this.devIdEmitter.emit(id);
+  onDevClick(developer: Developer): void {
+    this.developerEmitter.emit(developer);
   }
 }
