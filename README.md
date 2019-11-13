@@ -30,8 +30,7 @@
 - Docker settings
   - Shared drives **C**
   - Expose deamon on **tcp://localhost:2375**
-- Intellij settings (Optional)
-  `Build, Execution, Deployment" > "Docker`
+- Intellij settings (Optional) `Build, Execution, Deployment" > "Docker`
   - Change configuration:
     - Name: Docker
     - TCP socket: checked
@@ -64,14 +63,20 @@ The front-end only know **Developer** Microservice.
 You can try some different scenarios:
 
 1- Kill the _developer_ container and launch the app => you cannot have access to developers.
+
 2- Relaunch the _developer_ container => everything's now ok.
+
 3- Kill the _developer-posgresql_ container => you cannot have access to developers too, but the error is different.
+
 4- Relaunch the _developer-posgresql_ container => everything's now ok.
+
 5- Kill the _developer-information_ container => you cannot have access to developer informations
+
 6- Relaunch the _developer-information_ container => everything's now ok.
+
 7- Kill the _developer-information-mongodb_ container => you cannot have access to developer informations, but the error is different.
 
-> 🛈 The **Order** Microservice is present but still unused by the app nor for one of the other service.
+> 🛈 The **Order** Microservice is present but still unused by the app nor for one of the other services.
 
 ## ✋ Stop & 🚿 Clean
 
