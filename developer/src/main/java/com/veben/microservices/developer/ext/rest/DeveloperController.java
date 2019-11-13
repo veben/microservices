@@ -9,11 +9,15 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.dao.DataAccessResourceFailureException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.HttpServerErrorException;
+import org.springframework.web.client.ResourceAccessException;
 
 import javax.validation.Valid;
+import java.util.Optional;
 import java.util.Set;
 
 @RequiredArgsConstructor
@@ -24,7 +28,10 @@ import java.util.Set;
 @Slf4j
 public class DeveloperController {
 
-    private static final String DATABASE_ERROR_MESSAGE = "Developer Database down";
+    private static final String DEV_DATABASE_ERROR_MESSAGE = "Developer Database (PostgreSQL) is down!";
+    private static final String DEV_INFO_DATABASE_ERROR_MESSAGE = "Developer Information Database (MongoDB) is down!";
+    private static final String DEV_INFO_MS_ERROR_MESSAGE = "MS Developer Information is down!";
+    private static final String UNHANDLED_ERROR_MESSAGE = "Unhandled error!";
 
     private final DeveloperRepository developerRepository;
     private final DeveloperInformationService developerInformationService;
@@ -38,8 +45,10 @@ public class DeveloperController {
 
         try {
             developers = developerRepository.findDevelopersByLocationAndSpeciality(developerSearchDto.toDeveloperSearchCriteria());
+        } catch (DataAccessResourceFailureException e) {
+            return ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE).body(DEV_DATABASE_ERROR_MESSAGE);
         } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE).body(DATABASE_ERROR_MESSAGE);
+            return ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE).body(UNHANDLED_ERROR_MESSAGE);
         }
 
         return developers.isEmpty() ? ResponseEntity.noContent().build() : ResponseEntity.ok(developers);
@@ -54,8 +63,10 @@ public class DeveloperController {
 
         try {
             developersSpecialities = developerRepository.findAllDevelopersSpecialities();
+        } catch (DataAccessResourceFailureException e) {
+            return ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE).body(DEV_DATABASE_ERROR_MESSAGE);
         } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE).body(DATABASE_ERROR_MESSAGE);
+            return ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE).body(UNHANDLED_ERROR_MESSAGE);
         }
 
         return developersSpecialities.isEmpty() ? ResponseEntity.noContent().build() : ResponseEntity.ok(developersSpecialities);
@@ -63,10 +74,22 @@ public class DeveloperController {
 
     @GetMapping(value = "/developers/{id}/developer-informations")
     @ApiOperation(value = "Get developer informations for a developer", response = DeveloperInformationDto.class, responseContainer = "ResponseEntity")
-    public ResponseEntity<DeveloperInformationDto> findDeveloperInformationForDeveloper(@PathVariable("id") String id) {
+    public ResponseEntity findDeveloperInformationForDeveloper(@PathVariable("id") String id) {
         log.info("findDeveloperInformationForDeveloper called with params: " + id);
 
-        return developerInformationService.getDeveloperInformationById(id)
+        final Optional<DeveloperInformationDto> optionalDeveloperInformationDto;
+
+        try {
+            optionalDeveloperInformationDto = developerInformationService.getDeveloperInformationById(id);
+        } catch (ResourceAccessException e) {
+            return ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE).body(DEV_INFO_MS_ERROR_MESSAGE);
+        } catch (HttpServerErrorException e) {
+            return ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE).body(DEV_INFO_DATABASE_ERROR_MESSAGE);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE).body(UNHANDLED_ERROR_MESSAGE);
+        }
+
+        return optionalDeveloperInformationDto
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.noContent().build());
     }

@@ -57,6 +57,9 @@
  */
 import "zone.js/dist/zone"; // Included with Angular CLI.
 
+// To prevent from warning
+import "hammerjs";
+
 /** *************************************************************************************************
  * APPLICATION IMPORTS
  */

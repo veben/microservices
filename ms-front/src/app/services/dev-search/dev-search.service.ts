@@ -22,13 +22,13 @@ export class DevSearchService {
     this.baseUrl = environment.APP_SETTINGS.path.msDevPath + this.mdDevUri;
   }
 
-  public getDeveloperSpecialities(): Observable<any> {
+  public getDeveloperSpecialities(): Observable<string[]> {
     const uri = "/developers/list-specialities";
     const url = this.baseUrl + uri;
-    return this.http.get(url, { headers: this.headers });
+    return this.http.get<string[]>(url, { headers: this.headers });
   }
 
-  public getDevelopers(developerSearchSto: DeveloperSearchDto): Observable<any> {
+  public getDevelopers(developerSearchSto: DeveloperSearchDto): Observable<Developer[]> {
     const uri = "/developers";
     const url = this.baseUrl + uri;
     const params = new HttpParamsBuilder()
@@ -36,12 +36,12 @@ export class DevSearchService {
       .add("location", developerSearchSto.location)
       .add("speciality", developerSearchSto.speciality)
       .build();
-    return this.http.get(url, { headers: this.headers, params });
+    return this.http.get<Developer[]>(url, { headers: this.headers, params });
   }
 
-  public getDeveloperInformations(developerId: string): Observable<any> {
+  public getDeveloperInformations(developerId: string): Observable<DeveloperInformation> {
     const url = this.baseUrl + "/developers/" + developerId + "/developer-informations";
-    return this.http.get(url, { headers: this.headers });
+    return this.http.get<DeveloperInformation>(url, { headers: this.headers });
   }
 
   // **********************************************************************************************************
