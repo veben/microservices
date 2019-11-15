@@ -116,10 +116,8 @@ They are needed as followed:
 
 - **80**: for Front App
 - **8090**: for Developer MS
-- **8091**: for Order MS
 - **8092**: for Developer Information MS
 - **5433**: for Developer PostgreSQL database
-- **5434**: for Order PostgreSQL database
 - **27018**: for Developer Information MongoDb database
 - **8000**: for Portainer Agent
 - **9000**: for Portainer Server

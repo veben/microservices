@@ -21,27 +21,6 @@ services:
     ports:
       - 8090:8090
 
-  ########################## ORDER ##########################
-  order-postgresql:
-    container_name: order-postgresql
-    image: postgres:11.5-alpine
-    ports: # Map container port 5432 to host port 5434
-      - 5434:5432
-    environment:
-      - POSTGRES_DB=order
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=
-
-  order:
-    container_name: order
-    build:
-      context: .
-      args:
-        - APP_NAME=order
-        - APP_VERSION=0.0.1
-    ports:
-      - 8091:8091
-
   ########################## DEVELOPER INFORMATION ##########################
   developer-information-mongodb:
     container_name: developer-information-mongodb
