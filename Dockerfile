@@ -1,5 +1,5 @@
 # Build stage
-FROM maven:3.6.2-jdk-11-slim AS build
+FROM maven:3.6.2-jdk-13 AS build
 
 ARG APP_NAME
 ENV SPRING_PROFILES_ACTIVE "docker"
@@ -11,7 +11,7 @@ RUN mvn -f /home/app/pom.xml $MVN_OPTIONS
 
 
 ## Package & Run stage
-FROM openjdk:11-jre-slim
+FROM openjdk:13-jdk-alpine
 
 ARG APP_NAME
 ARG APP_VERSION

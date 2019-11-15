@@ -124,11 +124,11 @@ They are needed as followed:
 
 ### 💼 Tools to manage without docker
 
-#### ⛏ JDK: openjdk-11.0.4
+#### ⛏ JDK: openjdk-13.0.1
 
-- [Download](https://github.com/AdoptOpenJDK/openjdk11-upstream-binaries/releases/download/jdk-11.0.4%2B11/OpenJDK11U-jdk_x64_windows_11.0.4_11.zip)
-- Install here: `C:\Env\tools\jdk\openjdk-11u-11.0.4_11`
-- Create env var: **JAVA_HOME**=‪`C:\Env\tools\jdk\openjdk-11u-11.0.4_11`
+- [Download](https://jdk.java.net/13/)
+- Install here: `‪C:\Env\tools\jdk\jdk-13.0.1`
+- Create env var: **JAVA_HOME**=‪`‪C:\Env\tools\jdk\jdk-13.0.1`
 - Add `%JAVA_HOME%\bin` to **Path** env var
   > Check your current version:
 
