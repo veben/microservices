@@ -47,6 +47,10 @@
         <strong>{{ developerInformations.bronzeBadges }}</strong>
       </span>
     </div>
+    <br />
+    <div class="info-line" *ngIf="developerInformations.stackOverflowUrl && developerInformations.reputation">
+      <strong>Reputation</strong>: {{ developerInformations.reputation | number: "" }}
+    </div>
 
     <hr *ngIf="developerInformations.githubUrl" />
     <div class="info-line github-info" *ngIf="developerInformations.githubUrl">

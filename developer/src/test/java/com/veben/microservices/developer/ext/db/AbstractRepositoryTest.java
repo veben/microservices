@@ -23,7 +23,7 @@ import javax.validation.constraints.NotNull;
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 abstract class AbstractRepositoryTest {
 
-    private static final PostgreSQLContainer postgresqlContainer = new PostgreSQLContainer("postgres:11.5-alpine");
+    private static final PostgreSQLContainer postgresqlContainer = new PostgreSQLContainer("postgres:12-alpine");
 
     public static class Initializer implements ApplicationContextInitializer<ConfigurableApplicationContext> {
 

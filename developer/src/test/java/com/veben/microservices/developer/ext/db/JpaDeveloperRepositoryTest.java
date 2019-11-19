@@ -56,7 +56,7 @@ class JpaDeveloperRepositoryTest extends AbstractRepositoryTest {
     void should_find_developer_with_similar_speciality() {
         // given
         DeveloperSearchCriteria criteria = new DeveloperSearchCriteria()
-                .speciality("c++");
+                .speciality("c");
 
         // when
         Set<Developer> developersBySpeciality = jpaDeveloperRepository.findDevelopersByLocationAndSpeciality(criteria);

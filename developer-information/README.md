@@ -12,12 +12,6 @@
 docker-compose up --build -d && docker-compose logs -f
 ```
 
-### Stop:
-
-```sh
-docker-compose down
-```
-
 ## Build & Run with Docker
 
 ### Datasource:
@@ -54,7 +48,7 @@ docker build --tag developer-information:test --rm=true ..
 docker run -it --name developer-information --publish=8092:8092 developer-information:test
 ```
 
-## Build & Run with Maven
+## Build & Run with Docker + Maven Wrapper
 
 ### Datasource:
 
@@ -67,13 +61,13 @@ docker run --name developer-information-mongodb -p 27018:27017 -e MONGO_INITDB_R
 ### Build:
 
 ```sh
-mvn clean install
+mvnw clean install
 ```
 
 ### Run:
 
 ```sh
-mvn spring-boot:run -Dspring-boot.run.profiles=local
+mvnw spring-boot:run -Dspring-boot.run.profiles=local
 ```
 
 ## Access

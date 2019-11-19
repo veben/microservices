@@ -22,7 +22,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @WebMvcTest(controllers = DeveloperInformationController.class)
 class DeveloperInformationControllerTest {
 
-    private static final String DEVELOPER_INFORMATION_PATH = "/api/developer-information/v1/developer-information/";
+    private static final String DEVELOPER_INFORMATION_PATH = "/api/developer-information/v1/developer-informations/";
 
     @MockBean
     private DeveloperInformationRepository developerInformationRepository;
