@@ -5,13 +5,14 @@
 
 .snackbar-container {
   align-items: center;
-  height: 100%;
   padding: 1.5vmin;
+  display: flex;
+  flex-direction: row;
 
   .mat-icon {
     height: 2.5vh;
     width: 2.5vw;
-    color: black;
+    color: #ff4081;
   }
 }
 
@@ -64,7 +65,7 @@
   color: #f39200;
 }
 .snackbar-text-error {
-  color: #e53935;
+  color: #ff4081;
 }
 .snackbar-text-info {
   color: #1f263e;

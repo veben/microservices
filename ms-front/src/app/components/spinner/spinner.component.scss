@@ -10,7 +10,7 @@
 .spinner-icon {
   position: absolute;
   top: 50%;
-  left: 50%;
+  left: 45%;
   height: 56px;
 }
 
@@ -18,6 +18,7 @@
   transform: rotate(180deg);
   height: inherit;
   width: 75px;
+  display: flex;
 }
 
 .spinner-text {
@@ -30,7 +31,7 @@
   line-height: normal;
   letter-spacing: normal;
   text-align: center;
-  color: #37bfb1;
+  color: #ff4081;
   margin-top: 14px;
   margin-left: 10px;
 }
@@ -40,7 +41,7 @@
   width: 7px;
   height: 50px;
   border-radius: 20px;
-  background-image: linear-gradient(to bottom, #50b8e4, #37bfb1 55%, #50e3c2);
+  background-color: #ff4081;
 
   &.first-bar {
     animation: line-grow 0.5s 0.4s ease alternate infinite;
