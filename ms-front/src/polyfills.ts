@@ -55,10 +55,7 @@
 /** *************************************************************************************************
  * Zone JS is required by default for Angular itself.
  */
-import "zone.js/dist/zone"; // Included with Angular CLI.
-
-// To prevent from warning
-import "hammerjs";
+import "zone.js/dist/zone";
 
 /** *************************************************************************************************
  * APPLICATION IMPORTS
