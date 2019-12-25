@@ -1,5 +1,5 @@
 # Build stage
-FROM node:12.13-alpine AS build
+FROM node:13.5-alpine AS build
 
 WORKDIR /opt/
 
@@ -12,5 +12,5 @@ RUN npm install && \
 LABEL name=ms-front \
       maintainer="veben"
 
-FROM nginx:1.17.5-alpine
+FROM nginx:1.17.6-alpine
 COPY --from=build /opt/dist/ms-front /usr/share/nginx/html

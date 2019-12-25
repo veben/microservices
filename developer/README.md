@@ -19,7 +19,7 @@ docker-compose up --build -d && docker-compose logs -f
 > Launch PostgreSQL in a Docker container with:
 
 ```sh
-docker run --name developer-postgresql -p 5433:5432 -e POSTGRES_DB=developer postgres:11.5-alpine
+docker run --name developer-postgresql -p 5433:5432 -e POSTGRES_DB=developer postgres:12-alpine
 ```
 
 ### Build:
@@ -67,6 +67,8 @@ mvnw spring-boot:run -Dspring-boot.run.profiles=local
 ## Dataset
 
 ### Developer table:
+
+> All data come from Github and Stackoverflow public API
 
 | id                                   | avatar                                                                                           | location       | nickname      | speciality |
 | :----------------------------------- | :----------------------------------------------------------------------------------------------- | :------------- | :------------ | :--------- |
