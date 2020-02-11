@@ -33,7 +33,7 @@ public class SwaggerConfig {
                 "Developer information's",
                 "Developer information's management",
                 "0.0.1",
-                "Terms of service",
+                "https://github.com/veben/microservices/tree/master/developer-information",
                 new Contact("Benoit Veyrière", "https://stackoverflow.com/users/8718377/veben", "benoit.veyriere@gmail.com"),
                 "MIT License", "https://github.com/veben/microservices/blob/master/LICENSE.md", Collections.emptyList());
     }

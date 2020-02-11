@@ -37,7 +37,7 @@ public class DeveloperInformation {
     private int publicRepositories;
     private int followers;
 
-    protected DeveloperInformation() {
+    DeveloperInformation() {
         this.id = ObjectId.get();
     }
 

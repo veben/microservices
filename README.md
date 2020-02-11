@@ -29,7 +29,7 @@
 - Docker settings
   - Shared drives **C**
   - Expose deamon on **tcp://localhost:2375**
-- Intellij settings (Optional) `Build, Execution, Deployment" > "Docker`
+- Intellij settings (Optional) `"Build, Execution, Deployment" > "Docker"`
   - Change configuration:
     - Name: Docker
     - TCP socket: checked

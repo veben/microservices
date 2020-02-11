@@ -8,10 +8,8 @@ class DeveloperInformationTest {
 
     @Test
     void should_build_developer_information_with_random_uuid_with_lombok_builder() {
-        // given
-
         // when
-        DeveloperInformation developerInformation = DeveloperInformation
+        final DeveloperInformation developerInformation = DeveloperInformation
                 .builder()
                 .name("DeveloperInformationsTest")
                 .followers(5)
@@ -23,10 +21,8 @@ class DeveloperInformationTest {
 
     @Test
     void should_build_developer_information_with_random_uuid_with_no_arg_constructor() {
-        // given
-
         // when
-        DeveloperInformation developerInformation = new DeveloperInformation();
+        final DeveloperInformation developerInformation = new DeveloperInformation();
 
         // then
         assertThat(developerInformation.getId()).isNotNull();

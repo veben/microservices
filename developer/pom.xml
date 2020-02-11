@@ -6,7 +6,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.2.1.RELEASE</version>
+        <version>2.2.2.RELEASE</version>
         <relativePath/>
     </parent>
 
@@ -18,11 +18,10 @@
     <description>Developer management</description>
 
     <properties>
-        <java.version>13</java.version>
         <lombok.version>1.18.10</lombok.version>
         <swagger.version>2.9.2</swagger.version>
         <swagger.annotations.version>1.5.23</swagger.annotations.version>
-        <testcontainer.postgresql.version>1.12.1</testcontainer.postgresql.version>
+        <testcontainer.postgresql.version>1.12.5</testcontainer.postgresql.version>
     </properties>
 
     <dependencies>

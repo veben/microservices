@@ -18,8 +18,7 @@ import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@ExtendWith(SpringExtension.class)
-@WebMvcTest(controllers = DeveloperInformationController.class)
+@WebMvcTest(DeveloperInformationController.class)
 class DeveloperInformationControllerTest {
 
     private static final String DEVELOPER_INFORMATION_PATH = "/api/developer-information/v1/developer-informations/";
@@ -33,7 +32,7 @@ class DeveloperInformationControllerTest {
     @Test
     void should_return_no_content_when_no_data_with_this_id() throws Exception {
         // given
-        String developerId = "3bdfbba3-d472-4431-b9ac-c888e7505b8b";
+        final String developerId = "3bdfbba3-d472-4431-b9ac-c888e7505b8b";
 
 
         // when
@@ -46,8 +45,11 @@ class DeveloperInformationControllerTest {
     @Test
     void should_return_ok_when_data_with_this_id() throws Exception {
         // given
-        String developerId = "3bdfbba3-d472-4431-b9ac-c888e7505b8b";
-        DeveloperInformation actualDeveloperInformation = DeveloperInformation.builder().developerId(developerId).build();
+        final String developerId = "3bdfbba3-d472-4431-b9ac-c888e7505b8b";
+        final DeveloperInformation actualDeveloperInformation = DeveloperInformation
+                .builder()
+                .developerId(developerId)
+                .build();
         when(developerInformationRepository.findInformationsFromDeveloperId(developerId))
                 .thenReturn(Optional.of(actualDeveloperInformation));
 

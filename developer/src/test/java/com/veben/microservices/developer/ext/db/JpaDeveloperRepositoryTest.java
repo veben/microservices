@@ -17,10 +17,10 @@ class JpaDeveloperRepositoryTest extends AbstractRepositoryTest {
     @Test
     void should_find_all_developers_when_no_params() {
         // given
-        DeveloperSearchCriteria criteria = new DeveloperSearchCriteria();
+        final DeveloperSearchCriteria criteria = new DeveloperSearchCriteria();
 
         // when
-        Set<Developer> allDevelopers = jpaDeveloperRepository.findDevelopersByLocationAndSpeciality(criteria);
+        final Set<Developer> allDevelopers = jpaDeveloperRepository.findDevelopersByLocationAndSpeciality(criteria);
 
         // then
         assertThat(allDevelopers).isNotEmpty();
@@ -29,11 +29,11 @@ class JpaDeveloperRepositoryTest extends AbstractRepositoryTest {
     @Test
     void should_find_developer_with_similar_nickname() {
         // given
-        DeveloperSearchCriteria criteria = new DeveloperSearchCriteria()
+        final DeveloperSearchCriteria criteria = new DeveloperSearchCriteria()
                 .nickname("vebEn");
 
         // when
-        Set<Developer> developersByLocation = jpaDeveloperRepository.findDevelopersByLocationAndSpeciality(criteria);
+        final Set<Developer> developersByLocation = jpaDeveloperRepository.findDevelopersByLocationAndSpeciality(criteria);
 
         // then
         assertThat(developersByLocation).isNotEmpty();
@@ -42,11 +42,11 @@ class JpaDeveloperRepositoryTest extends AbstractRepositoryTest {
     @Test
     void should_find_developer_with_similar_location() {
         // given
-        DeveloperSearchCriteria criteria = new DeveloperSearchCriteria()
+        final DeveloperSearchCriteria criteria = new DeveloperSearchCriteria()
                 .location("FR");
 
         // when
-        Set<Developer> developersBySpeciality = jpaDeveloperRepository.findDevelopersByLocationAndSpeciality(criteria);
+        final Set<Developer> developersBySpeciality = jpaDeveloperRepository.findDevelopersByLocationAndSpeciality(criteria);
 
         // then
         assertThat(developersBySpeciality).isNotEmpty();
@@ -55,11 +55,11 @@ class JpaDeveloperRepositoryTest extends AbstractRepositoryTest {
     @Test
     void should_find_developer_with_similar_speciality() {
         // given
-        DeveloperSearchCriteria criteria = new DeveloperSearchCriteria()
+        final DeveloperSearchCriteria criteria = new DeveloperSearchCriteria()
                 .speciality("c");
 
         // when
-        Set<Developer> developersBySpeciality = jpaDeveloperRepository.findDevelopersByLocationAndSpeciality(criteria);
+        final Set<Developer> developersBySpeciality = jpaDeveloperRepository.findDevelopersByLocationAndSpeciality(criteria);
 
         // then
         assertThat(developersBySpeciality).isNotEmpty();
@@ -68,13 +68,13 @@ class JpaDeveloperRepositoryTest extends AbstractRepositoryTest {
     @Test
     void should_find_developer_with_similar_nickname_speciality_and_location() {
         // given
-        DeveloperSearchCriteria criteria = new DeveloperSearchCriteria()
+        final DeveloperSearchCriteria criteria = new DeveloperSearchCriteria()
                 .nickname("veben")
                 .speciality("java")
                 .location("France");
 
         // when
-        Set<Developer> developersBySpeciality = jpaDeveloperRepository.findDevelopersByLocationAndSpeciality(criteria);
+        final Set<Developer> developersBySpeciality = jpaDeveloperRepository.findDevelopersByLocationAndSpeciality(criteria);
 
         // then
         assertThat(developersBySpeciality).isNotEmpty();
@@ -82,10 +82,8 @@ class JpaDeveloperRepositoryTest extends AbstractRepositoryTest {
 
     @Test
     void should_find_all_specialities() {
-        // given
-
         // when
-        Set<String> developersSpecialities = jpaDeveloperRepository.findAllDevelopersSpecialities();
+        final Set<String> developersSpecialities = jpaDeveloperRepository.findAllDevelopersSpecialities();
 
         // then
         assertThat(developersSpecialities).isNotEmpty();

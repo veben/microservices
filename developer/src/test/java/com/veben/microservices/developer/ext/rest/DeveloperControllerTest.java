@@ -4,12 +4,10 @@ import com.veben.microservices.developer.domain.Developer;
 import com.veben.microservices.developer.domain.DeveloperRepository;
 import com.veben.microservices.developer.ext.client.DeveloperInformationService;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.HttpStatus;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 
@@ -20,8 +18,7 @@ import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@ExtendWith(SpringExtension.class)
-@WebMvcTest(controllers = DeveloperController.class)
+@WebMvcTest(DeveloperController.class)
 class DeveloperControllerTest {
 
     private static final String DEVELOPER_PATH = "/api/developer/v1/developers/";

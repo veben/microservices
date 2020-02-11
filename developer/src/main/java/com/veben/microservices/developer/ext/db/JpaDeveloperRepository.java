@@ -12,7 +12,6 @@ import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 
-@SuppressWarnings("SyntaxError")
 @Repository
 public interface JpaDeveloperRepository extends
         DeveloperRepository,
