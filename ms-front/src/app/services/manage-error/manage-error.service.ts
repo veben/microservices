@@ -10,12 +10,14 @@ export class ManageErrorService {
   constructor(private snackbarService: SnackbarService) {}
 
   public serviceBackErrorDisplaying(err: HttpErrorResponse): void {
-    const displayedMessage = err.status === 503 ? err.error : MessageUtils.MS_DEVELOPER_DOWN;
+    const displayedMessage = err.status === 503 ? err.error.message : MessageUtils.MS_DEVELOPER_DOWN;
 
     this.snackbarService.showError(displayedMessage);
   }
 
   public serviceBackErrorLogging(err: HttpErrorResponse): void {
-    console.log("Error:", err.message);
+    const error: Error = err.error;
+    console.log("Error: ", err.message);
+    console.log("Error: ", error.message);
   }
 }

@@ -18,8 +18,8 @@ describe("SpinnerService", () => {
 
   beforeEach(() => {
     injector = getTestBed();
-    httpMock = injector.get(HttpTestingController);
-    service = injector.get(SpinnerService);
+    httpMock = injector.inject(HttpTestingController);
+    service = injector.inject(SpinnerService);
   });
 
   afterEach(() => {

@@ -18,35 +18,29 @@ import java.util.Set;
 @RequiredArgsConstructor
 public class DeveloperInformationController extends BaseController {
 
-    private static final String DEVELOPER_INFORMATIONS_URI = BASE_URI + "/developer-informations";
+    static final String DEVELOPER_INFORMATION_URI = BASE_URI + "/developer-informations";
+    private static final String DEVELOPER_INFORMATION_FOR_DEV_URI = DEVELOPER_INFORMATION_URI + "/{developerId}";
 
     @NonNull
     private final DeveloperInformationRepository developerInformationRepository;
 
-    @GetMapping(DEVELOPER_INFORMATIONS_URI)
-    @ApiOperation(value = "List developer informations",
+    @GetMapping(DEVELOPER_INFORMATION_URI)
+    @ApiOperation(value = "List all developer's information",
             response = DeveloperInformation.class,
             responseContainer = "ResponseEntity")
     public ResponseEntity<Set<DeveloperInformation>> findAllDeveloperInformations() {
         log.info("findAllDeveloperInformations called");
 
-        final Set<DeveloperInformation> developerInformations = developerInformationRepository.findAllInformations();
-
-        return developerInformations.isEmpty()
-                ? ResponseEntity.noContent().build()
-                : ResponseEntity.ok(developerInformations);
+        return ResponseEntity.ok(developerInformationRepository.findAllInformations());
     }
 
-    @GetMapping(DEVELOPER_INFORMATIONS_URI + "/{developerId}")
-    @ApiOperation(value = "Get developer informations for a developer",
+    @GetMapping(DEVELOPER_INFORMATION_FOR_DEV_URI)
+    @ApiOperation(value = "Get developer's information for a developer",
             response = DeveloperInformation.class,
             responseContainer = "ResponseEntity")
     public ResponseEntity<DeveloperInformation> findDeveloperInformationForDeveloper(@PathVariable("developerId") String developerId) {
         log.info("findDeveloperInformationForDeveloper called with params: " + developerId);
 
-        return developerInformationRepository.findInformationsFromDeveloperId(developerId)
-                .map(ResponseEntity::ok)
-                .orElse(ResponseEntity.noContent().build());
-
+        return ResponseEntity.ok(developerInformationRepository.findDeveloperInformation(developerId));
     }
 }

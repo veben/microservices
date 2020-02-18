@@ -27,7 +27,7 @@ describe("SpinnerInterceptor", () => {
         }
       ]
     }).compileComponents();
-    interceptorInstance = getInterceptorInstance<SpinnerInterceptor>(TestBed.get(HTTP_INTERCEPTORS), SpinnerInterceptor);
+    interceptorInstance = getInterceptorInstance<SpinnerInterceptor>(TestBed.inject(HTTP_INTERCEPTORS), SpinnerInterceptor);
   }));
 
   afterEach(inject([HttpTestingController], (mock: HttpTestingController) => {

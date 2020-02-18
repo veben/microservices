@@ -22,21 +22,19 @@ export class DevSearchService {
     this.baseUrl = environment.APP_SETTINGS.path.msDevPath + this.mdDevUri;
   }
 
-  public getDeveloperSpecialities(): Observable<string[]> {
-    const uri = "/developers/list-specialities";
-    const url = this.baseUrl + uri;
-    return this.http.get<string[]>(url, { headers: this.headers });
-  }
-
   public getDevelopers(developerSearchSto: DeveloperSearchDto): Observable<Developer[]> {
-    const uri = "/developers";
-    const url = this.baseUrl + uri;
+    const url = this.baseUrl + "/developers";
     const params = new HttpParamsBuilder()
       .add("nickname", developerSearchSto.nickname)
       .add("location", developerSearchSto.location)
       .add("speciality", developerSearchSto.speciality)
       .build();
     return this.http.get<Developer[]>(url, { headers: this.headers, params });
+  }
+
+  public getDeveloperSpecialities(): Observable<string[]> {
+    const url = this.baseUrl + "/developers/list-specialities";
+    return this.http.get<string[]>(url, { headers: this.headers });
   }
 
   public getDeveloperInformations(developerId: string): Observable<DeveloperInformation> {
@@ -46,8 +44,8 @@ export class DevSearchService {
 
   // **********************************************************************************************************
 
-  public loadDeveloperSpecialities(): Observable<string[]> {
-    return this.getDeveloperSpecialities().pipe(
+  public loadDevelopers(developerSearchSto: DeveloperSearchDto): Observable<Developer[]> {
+    return this.getDevelopers(developerSearchSto).pipe(
       catchError((err: HttpErrorResponse) => {
         this.manageErrorService.serviceBackErrorLogging(err);
         return throwError(err);
@@ -55,8 +53,8 @@ export class DevSearchService {
     );
   }
 
-  public loadDevelopers(developerSearchSto: DeveloperSearchDto): Observable<Developer[]> {
-    return this.getDevelopers(developerSearchSto).pipe(
+  public loadDeveloperSpecialities(): Observable<string[]> {
+    return this.getDeveloperSpecialities().pipe(
       catchError((err: HttpErrorResponse) => {
         this.manageErrorService.serviceBackErrorLogging(err);
         return throwError(err);

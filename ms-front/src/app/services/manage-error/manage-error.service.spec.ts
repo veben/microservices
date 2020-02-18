@@ -12,7 +12,7 @@ describe("ManageErrorService", () => {
   );
 
   it("should be created", () => {
-    const service: ManageErrorService = TestBed.get(ManageErrorService);
+    const service: ManageErrorService = TestBed.inject(ManageErrorService);
     expect(service).toBeTruthy();
   });
 });
