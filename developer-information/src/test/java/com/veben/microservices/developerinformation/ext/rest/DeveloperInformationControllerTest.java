@@ -27,7 +27,7 @@ class DeveloperInformationControllerTest {
     void should_return_ok_when_data_with_this_id() throws Exception {
         // given
         final var developerId = "3bdfbba3-d472-4431-b9ac-c888e7505b8b";
-        when(developerInformationRepository.findDeveloperInformation(developerId))
+        when(developerInformationRepository.findDeveloperInformationForDeveloper(developerId))
                 .thenReturn(DeveloperInformation
                         .builder()
                         .developerId(developerId)

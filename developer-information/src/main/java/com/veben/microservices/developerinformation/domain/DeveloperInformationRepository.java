@@ -4,7 +4,7 @@ import java.util.Set;
 
 public interface DeveloperInformationRepository {
 
-    DeveloperInformation findDeveloperInformation(String developerId);
+    DeveloperInformation findDeveloperInformationForDeveloper(String developerId);
 
     Set<DeveloperInformation> findAllInformations();
 }

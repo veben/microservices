@@ -1,10 +1,9 @@
-version: '3.7'
+version: "3.7"
 services:
-
-########################## DEVELOPER INFORMATION ##########################
+  ########################## DEVELOPER INFORMATION ##########################
   developer-information-mongodb:
     container_name: developer-information-mongodb
-    image: mongo:4.2.1
+    image: mongo:4.2.3
     restart: always
     ports:
       - 27018:27017

@@ -41,6 +41,6 @@ public class DeveloperInformationController extends BaseController {
     public ResponseEntity<DeveloperInformation> findDeveloperInformationForDeveloper(@PathVariable("developerId") String developerId) {
         log.info("findDeveloperInformationForDeveloper called with params: " + developerId);
 
-        return ResponseEntity.ok(developerInformationRepository.findDeveloperInformation(developerId));
+        return ResponseEntity.ok(developerInformationRepository.findDeveloperInformationForDeveloper(developerId));
     }
 }

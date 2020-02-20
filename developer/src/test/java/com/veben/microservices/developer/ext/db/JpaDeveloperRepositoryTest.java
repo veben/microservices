@@ -2,6 +2,7 @@ package com.veben.microservices.developer.ext.db;
 
 import com.veben.microservices.developer.domain.Developer;
 import com.veben.microservices.developer.domain.DeveloperSearchCriteria;
+import com.veben.microservices.developer.ext.db.config.AbstractRepositoryTest;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 

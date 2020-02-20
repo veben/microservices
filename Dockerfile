@@ -3,7 +3,7 @@ FROM maven:3.6.2-jdk-13 AS build
 
 ARG APP_NAME
 ENV SPRING_PROFILES_ACTIVE "docker"
-ENV MVN_OPTIONS "clean package -DskipTests"
+ENV MVN_OPTIONS "clean package"
 
 COPY ${APP_NAME}/src /home/app/src
 COPY ${APP_NAME}/pom.xml /home/app

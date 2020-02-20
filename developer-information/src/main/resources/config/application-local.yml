@@ -2,4 +2,4 @@ mongo:
   uri: localhost
   username: root
   password: root
-  port: 27018
+  port: 27017

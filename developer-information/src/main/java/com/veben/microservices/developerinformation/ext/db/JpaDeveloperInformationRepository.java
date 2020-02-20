@@ -20,7 +20,7 @@ public interface JpaDeveloperInformationRepository extends
     }
 
     @Override
-    default DeveloperInformation findDeveloperInformation(String developerId) {
+    default DeveloperInformation findDeveloperInformationForDeveloper(String developerId) {
         return findDeveloperInformationByDeveloperId(developerId);
     }
 
