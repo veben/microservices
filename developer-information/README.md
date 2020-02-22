@@ -39,7 +39,7 @@ docker cp mongo/data-local.json developer-information-mongodb:/data-local.json &
 ### Build:
 
 ```sh
-docker build --tag developer-information:test --rm=true ..
+docker build --tag developer-information:test --build-arg APP_NAME=developer-information --build-arg APP_VERSION=0.0.1 --rm=true ..
 ```
 
 ### Run:

@@ -25,7 +25,7 @@ docker run --name developer-postgresql -p 5433:5432 -e POSTGRES_DB=developer pos
 ### Build:
 
 ```sh
-docker build --tag developer:test --rm=true ..
+docker build --tag developer:test --build-arg APP_NAME=developer --build-arg APP_VERSION=0.0.1 --rm=true ..
 ```
 
 ### Run:
