@@ -11,7 +11,7 @@ RUN mvn -f /home/app/pom.xml $MVN_OPTIONS
 
 
 # Extract layers stage
-FROM openjdk:13-jdk-alpine as extract
+FROM adoptopenjdk/openjdk13:alpine-jre as extract
 
 ARG APP_NAME
 ARG APP_VERSION
@@ -26,7 +26,7 @@ RUN java -Djarmode=layertools -jar $JAR_PATH extract
 
 
 # Package & Run stage
-FROM openjdk:13-jdk-alpine
+FROM adoptopenjdk/openjdk13:alpine-jre
 
 ARG APP_NAME
 ARG APP_VERSION
