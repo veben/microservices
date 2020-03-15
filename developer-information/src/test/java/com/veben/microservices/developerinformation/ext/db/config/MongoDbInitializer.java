@@ -6,10 +6,6 @@ import org.springframework.context.ApplicationContextInitializer;
 import org.springframework.context.ConfigurableApplicationContext;
 
 import javax.validation.constraints.NotNull;
-import java.io.IOException;
-import java.net.Socket;
-
-import static com.veben.microservices.developerinformation.ext.db.config.MongoDbContainer.INTERNAL_EXPOSED_PORT;
 
 @Slf4j
 class MongoDbInitializer implements ApplicationContextInitializer<ConfigurableApplicationContext> {
@@ -22,8 +18,6 @@ class MongoDbInitializer implements ApplicationContextInitializer<ConfigurableAp
         mongoDbContainer.start();
 
         defineMongoDbConnection(configurableApplicationContext);
-
-        assertThatPortIsAvailable();
     }
 
     private void defineMongoDbConnection(ConfigurableApplicationContext configurableApplicationContext) {
@@ -36,13 +30,5 @@ class MongoDbInitializer implements ApplicationContextInitializer<ConfigurableAp
                 + mongoDbContainer.getPort()
         );
         values.applyTo(configurableApplicationContext);
-    }
-
-    private void assertThatPortIsAvailable() {
-        try {
-            new Socket(mongoDbContainer.getContainerIpAddress(), INTERNAL_EXPOSED_PORT);
-        } catch (IOException e) {
-            throw new AssertionError("The expected port " + INTERNAL_EXPOSED_PORT + " is not available!");
-        }
     }
 }

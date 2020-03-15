@@ -13,7 +13,7 @@ class MongoDbContainer extends GenericContainer<MongoDbContainer> {
         this(DEFAULT_IMAGE_AND_TAG);
     }
 
-    MongoDbContainer(@NotNull String image) {
+    private MongoDbContainer(@NotNull String image) {
         super(image);
         addExposedPort(INTERNAL_EXPOSED_PORT);
     }

@@ -10,15 +10,24 @@ import javax.validation.constraints.NotNull;
 @Slf4j
 class PostgreSqlInitializer implements ApplicationContextInitializer<ConfigurableApplicationContext> {
 
-    private final PostgreSQLContainer postgresqlContainer = new PostgreSQLContainer("postgres:11.5-alpine");
+    private static final String POSTGRES_IMAGE = "postgres:12.2-alpine";
+    private static final String DATABASE = "developer";
+    private static final String USERNAME_PROPERTY = "spring.datasource.username";
+    private static final String PASSWD_PROPERTY = "spring.datasource.password";
+    private static final String URL_PROPERTY = "spring.datasource.url";
+
+    private final PostgreSQLContainer postgresqlContainer = new PostgreSQLContainer(POSTGRES_IMAGE);
 
     @Override
     public void initialize(@NotNull ConfigurableApplicationContext configurableApplicationContext) {
+
+        log.info("Initilizing postgres containert to perform repository tests");
+
         postgresqlContainer
-                .withDatabaseName("developer")
-                .withUsername(configurableApplicationContext.getEnvironment().getProperty("spring.datasource.username"))
-                .withPassword(configurableApplicationContext.getEnvironment().getProperty("spring.datasource.password"))
+                .withDatabaseName(DATABASE)
+                .withUsername(configurableApplicationContext.getEnvironment().getProperty(USERNAME_PROPERTY))
+                .withPassword(configurableApplicationContext.getEnvironment().getProperty(PASSWD_PROPERTY))
                 .start();
-        configurableApplicationContext.getEnvironment().getSystemProperties().put("spring.datasource.url", postgresqlContainer.getJdbcUrl());
+        configurableApplicationContext.getEnvironment().getSystemProperties().put(URL_PROPERTY, postgresqlContainer.getJdbcUrl());
     }
 }
