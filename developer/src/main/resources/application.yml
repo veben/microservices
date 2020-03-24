@@ -6,7 +6,7 @@ spring:
     name: developer
 
   datasource:
-    url: jdbc:postgresql://${database.host}:${database.port}/developer
+    url: jdbc:postgresql://${database.host}:${database.port}/${spring.application.name}
     username: ${database.username}
     password: ${database.password}
   jpa:
@@ -24,3 +24,8 @@ management:
     web:
       exposure:
         include: "*"
+
+# Application
+application:
+  protocol: http
+  host: localhost
