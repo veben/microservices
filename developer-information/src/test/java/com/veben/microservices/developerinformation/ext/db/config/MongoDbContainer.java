@@ -6,7 +6,7 @@ import javax.validation.constraints.NotNull;
 
 class MongoDbContainer extends GenericContainer<MongoDbContainer> {
 
-    static final int INTERNAL_EXPOSED_PORT = 27017;
+    private static final int INTERNAL_EXPOSED_PORT = 27017;
     private static final String DEFAULT_IMAGE_AND_TAG = "mongo:4.2.3";
 
     MongoDbContainer() {

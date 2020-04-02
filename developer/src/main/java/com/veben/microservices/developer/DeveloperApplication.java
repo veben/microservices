@@ -12,6 +12,10 @@ public class DeveloperApplication {
 
         ConfigurableApplicationContext context = SpringApplication.run(DeveloperApplication.class, args);
 
+        logStartupInfomations(context);
+    }
+
+    private static void logStartupInfomations(ConfigurableApplicationContext context) {
         String protocol = context.getEnvironment().getProperty("application.protocol");
         String host = context.getEnvironment().getProperty("application.host");
         String port = context.getEnvironment().getProperty("server.port");

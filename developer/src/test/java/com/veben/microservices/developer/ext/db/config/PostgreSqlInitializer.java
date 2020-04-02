@@ -10,7 +10,7 @@ import javax.validation.constraints.NotNull;
 @Slf4j
 class PostgreSqlInitializer implements ApplicationContextInitializer<ConfigurableApplicationContext> {
 
-    private static final String POSTGRES_IMAGE = "postgres:12.2-alpine";
+    private static final String POSTGRES_IMAGE = "postgres:11.5-alpine";
     private static final String DATABASE = "developer";
     private static final String USERNAME_PROPERTY = "spring.datasource.username";
     private static final String PASSWD_PROPERTY = "spring.datasource.password";
@@ -21,7 +21,7 @@ class PostgreSqlInitializer implements ApplicationContextInitializer<Configurabl
     @Override
     public void initialize(@NotNull ConfigurableApplicationContext configurableApplicationContext) {
 
-        log.info("Initilizing postgres containert to perform repository tests");
+        log.info("Initializing postgres container to perform repository tests");
 
         postgresqlContainer
                 .withDatabaseName(DATABASE)

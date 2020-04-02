@@ -16,6 +16,8 @@
 
     <name>Developer</name>
     <description>Developer management</description>
+	
+	<packaging>jar</packaging>
 
     <properties>
         <java.version>13</java.version>

@@ -17,6 +17,8 @@
 
     <name>Developer information's</name>
     <description>Developer information's management</description>
+	
+	<packaging>jar</packaging>
 
     <properties>
         <java.version>13</java.version>
