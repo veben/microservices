@@ -14,7 +14,7 @@ services:
   developer:
     container_name: developer
     build:
-      context: .
+      context: ./developer
       args:
         - APP_NAME=developer
         - APP_VERSION=0.0.1
@@ -40,7 +40,7 @@ services:
   developer-information:
     container_name: developer-information
     build:
-      context: .
+      context: ./developer-information
       args:
         - APP_NAME=developer-information
         - APP_VERSION=0.0.1

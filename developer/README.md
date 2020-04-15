@@ -12,6 +12,20 @@
 docker-compose up --build -d && docker-compose logs -f
 ```
 
+### Build & Run (using **Docker BuildKit**)
+
+> Unix version
+
+```sh
+COMPOSE_DOCKER_CLI_BUILD=1 DOCKER_BUILDKIT=1 docker-compose up --build -d && docker-compose logs -f
+```
+
+> Windows version
+
+```sh
+set "COMPOSE_DOCKER_CLI_BUILD=1" & set "DOCKER_BUILDKIT=1" & docker-compose up --build -d && docker-compose logs -f
+```
+
 ## Build & Run with Docker
 
 ### Datasource:
@@ -24,8 +38,16 @@ docker run --name developer-postgresql -p 5433:5432 -e POSTGRES_DB=developer pos
 
 ### Build:
 
+> Unix version
+
 ```sh
-docker build --tag developer:test --build-arg APP_NAME=developer --build-arg APP_VERSION=0.0.1 --rm=true ..
+DOCKER_BUILDKIT=1 docker build --tag developer:test --build-arg APP_NAME=developer --build-arg APP_VERSION=0.0.1 --rm=true .
+```
+
+> Windows version
+
+```sh
+set "DOCKER_BUILDKIT=1" & docker build --tag developer:test --build-arg APP_NAME=developer --build-arg APP_VERSION=0.0.1 --rm=true .
 ```
 
 ### Run:

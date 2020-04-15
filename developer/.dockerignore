@@ -1,0 +1,8 @@
+.mvn/
+img/
+target/
+developer.iml
+docker-compose.yml
+mvnw/
+mvnw.cmd
+README.md

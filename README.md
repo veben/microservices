@@ -41,8 +41,24 @@ To manage the whole project with **Docker Compose** using just few commands
 
 > ⚠ The first one build is very long
 
+### With experimental **Docker BuildKit**:
+
+> Unix version
+
 ```sh
- docker-compose up
+COMPOSE_DOCKER_CLI_BUILD=1 DOCKER_BUILDKIT=1 docker-compose up --build -d && docker-compose logs -f
+```
+
+> Windows version
+
+```sh
+set "COMPOSE_DOCKER_CLI_BUILD=1" & set "DOCKER_BUILDKIT=1" & docker-compose up --build -d && docker-compose logs -f
+```
+
+### Without **Docker BuildKit**
+
+```sh
+ docker-compose up && docker-compose logs -f
 ```
 
 ## 💻 Browse to the app

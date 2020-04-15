@@ -19,7 +19,7 @@ services:
   developer-information:
     container_name: developer-information
     build:
-      context: ..
+      context: .
       args:
         - APP_NAME=developer-information
         - APP_VERSION=0.0.1
