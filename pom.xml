@@ -5,6 +5,7 @@
 
     <groupId>com.veben</groupId>
     <artifactId>microservices</artifactId>
+    <version>0.0.1</version>
 
     <name>Microservices</name>
     <description>Microservices development</description>

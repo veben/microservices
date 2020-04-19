@@ -1,5 +1,5 @@
 # Build stage
-FROM maven:3.6.2-jdk-13 AS build
+FROM maven:3.6.3-jdk-14 AS build
 
 ENV SPRING_PROFILES_ACTIVE "docker"
 ENV MVN_OPTIONS "clean package"
@@ -10,7 +10,7 @@ RUN mvn -f /home/app/pom.xml $MVN_OPTIONS
 
 
 # Extract layers stage
-FROM adoptopenjdk/openjdk13:alpine-jre as extract
+FROM adoptopenjdk/openjdk14:alpine-jre-nightly as extract
 
 ARG APP_NAME
 ARG APP_VERSION
@@ -26,7 +26,7 @@ RUN java -Djarmode=layertools -jar $JAR_PATH extract
 
 
 # Package & Run stage
-FROM adoptopenjdk/openjdk13:alpine-jre
+FROM adoptopenjdk/openjdk14:alpine-jre-nightly
 
 ARG APP_NAME
 ARG APP_VERSION
