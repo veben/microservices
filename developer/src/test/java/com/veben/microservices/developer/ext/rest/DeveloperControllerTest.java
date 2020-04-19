@@ -4,6 +4,7 @@ import com.veben.microservices.developer.domain.Developer;
 import com.veben.microservices.developer.domain.DeveloperRepository;
 import com.veben.microservices.developer.ext.client.DeveloperInformationService;
 import com.veben.microservices.developer.ext.client.dto.DeveloperInformationDto;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -58,30 +59,33 @@ class DeveloperControllerTest {
                 .andExpect(status().isOk());
     }
 
-    @Test
-    void should_return_ok_when_data_information() throws Exception {
-        // given
-        final var id = "d15a5fb3-a157-4d13-ad2d-c8add8250e25";
-        final var url = DEVELOPERS_URI + "/" + id + "/developer-informations";
-        when(developerInformationService.getDeveloperInformationById(id))
-                .thenReturn(Optional.of(new DeveloperInformationDto()));
+    @Nested
+    class should_test_developer_informations {
+        @Test
+        void should_return_ok_when_data_information() throws Exception {
+            // given
+            final var id = "d15a5fb3-a157-4d13-ad2d-c8add8250e25";
+            final var url = DEVELOPERS_URI + "/" + id + "/developer-informations";
+            when(developerInformationService.getDeveloperInformationById(id))
+                    .thenReturn(Optional.of(new DeveloperInformationDto()));
 
-        // when
-        mockMvc.perform(get(url))
-                .andDo(MockMvcResultHandlers.print())
-                // then
-                .andExpect(status().isOk());
-    }
+            // when
+            mockMvc.perform(get(url))
+                    .andDo(MockMvcResultHandlers.print())
+                    // then
+                    .andExpect(status().isOk());
+        }
 
-    @Test
-    void should_return_not_found_when_unknown_id() throws Exception {
-        // given
-        final var url = DEVELOPERS_URI + "/" + "unknown-id" + "/developer-informations";
+        @Test
+        void should_return_not_found_when_unknown_id() throws Exception {
+            // given
+            final var url = DEVELOPERS_URI + "/" + "unknown-id" + "/developer-informations";
 
-        // when
-        mockMvc.perform(get(url))
-                .andDo(MockMvcResultHandlers.print())
-                // then
-                .andExpect(status().isNotFound());
+            // when
+            mockMvc.perform(get(url))
+                    .andDo(MockMvcResultHandlers.print())
+                    // then
+                    .andExpect(status().isNotFound());
+        }
     }
 }

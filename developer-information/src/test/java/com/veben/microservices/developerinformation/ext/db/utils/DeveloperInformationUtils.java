@@ -1,11 +1,13 @@
 package com.veben.microservices.developerinformation.ext.db.utils;
 
 import com.veben.microservices.developerinformation.domain.DeveloperInformation;
+import lombok.experimental.UtilityClass;
 import org.testcontainers.shaded.com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.*;
 import java.util.stream.Collectors;
 
+@UtilityClass
 public class DeveloperInformationUtils {
 
     public static DeveloperInformation[] insertExampleJson(String filePath) {
