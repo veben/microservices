@@ -9,7 +9,7 @@ services:
     environment:
       - POSTGRES_DB=developer
       - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=
+      - POSTGRES_PASSWORD=pass
 
   developer:
     container_name: developer

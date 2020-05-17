@@ -2,7 +2,6 @@ package com.veben.microservices.developerinformation.ext.rest;
 
 import com.veben.microservices.developerinformation.domain.DeveloperInformation;
 import com.veben.microservices.developerinformation.domain.DeveloperInformationRepository;
-import io.swagger.annotations.ApiOperation;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -25,9 +24,6 @@ public class DeveloperInformationController extends BaseController {
     private final DeveloperInformationRepository developerInformationRepository;
 
     @GetMapping(DEVELOPER_INFORMATION_URI)
-    @ApiOperation(value = "List all developer's information",
-            response = DeveloperInformation.class,
-            responseContainer = "ResponseEntity")
     public ResponseEntity<Set<DeveloperInformation>> findAllDeveloperInformations() {
         log.info("findAllDeveloperInformations called");
 
@@ -35,9 +31,6 @@ public class DeveloperInformationController extends BaseController {
     }
 
     @GetMapping(DEVELOPER_INFORMATION_FOR_DEV_URI)
-    @ApiOperation(value = "Get developer's information for a developer",
-            response = DeveloperInformation.class,
-            responseContainer = "ResponseEntity")
     public ResponseEntity<DeveloperInformation> findDeveloperInformationForDeveloper(@PathVariable("developerId") String developerId) {
         log.info("findDeveloperInformationForDeveloper called with params: " + developerId);
 

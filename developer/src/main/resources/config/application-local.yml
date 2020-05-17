@@ -2,7 +2,7 @@ database:
   host: localhost
   port: 5433
   username: postgres
-  password:
+  password: pass
 
 developer-information:
   host: localhost

@@ -33,7 +33,7 @@ set "COMPOSE_DOCKER_CLI_BUILD=1" & set "DOCKER_BUILDKIT=1" & docker-compose up -
 > Launch PostgreSQL in a Docker container with:
 
 ```sh
-docker run --name developer-postgresql -p 5433:5432 -e POSTGRES_DB=developer postgres:12-alpine
+docker run --name developer-postgresql -p 5433:5432 -e POSTGRES_DB=developer -e POSTGRES_PASSWORD=pass postgres:12-alpine
 ```
 
 ### Build:
@@ -63,7 +63,7 @@ docker run -it --name developer --publish=8090:8090 developer:test
 > Launch PostgreSQL in a Docker container with:
 
 ```sh
-docker run --name developer-postgresql -p 5433:5432 -e POSTGRES_DB=developer postgres:12-alpine
+docker run --name developer-postgresql -p 5433:5432 -e POSTGRES_DB=developer -e POSTGRES_PASSWORD=pass postgres:12-alpine
 ```
 
 ### Build:
@@ -84,7 +84,7 @@ mvnw spring-boot:run -Dspring-boot.run.profiles=local
 - Swagger: http://localhost:8090/swagger-ui.html
 - Database: jdbc:postgresql://localhost:5433/developer
   - User: postgres
-  - Password:
+  - Password: pass
 
 ## Dataset
 
