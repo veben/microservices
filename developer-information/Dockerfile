@@ -49,7 +49,7 @@ RUN addgroup -S $MAINTAINER && \
 
 COPY --from=extract "$LIB_FOLDER/dependencies/" $JAR_FOLDER
 COPY --from=extract "$LIB_FOLDER/snapshot-dependencies/" $JAR_FOLDER
-COPY --from=extract "$LIB_FOLDER/resources/" $JAR_FOLDER
+COPY --from=extract "$LIB_FOLDER/spring-boot-loader/" $JAR_FOLDER
 COPY --from=extract "$LIB_FOLDER/application/" $JAR_FOLDER
 
 USER $MAINTAINER
