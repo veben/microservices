@@ -6,19 +6,19 @@
 ![](https://github.com/veben/microservices/workflows/Developer-information-CI/badge.svg)
 ![](https://github.com/veben/microservices/workflows/MS-front-CI/badge.svg)
 
-## 📜 Table of Contents
+# 📜 Table of Contents
 
-- [ ] [Tools Setup](#tools-setup)
-- [ ] [Build & Launch](#build-launch)
-- [ ] [Browse to the app](#browse-to-the-app)
-- [ ] [Manage containers and other Docker things](#manage-containers-and-other-docker-things)
-- [ ] [Stop & Clean](#stop-clean)
-- [ ] [Microservice Developer in depth](developer/README.md)
-- [ ] [Microservice Developer Informations in depth](developer-information/README.md)
-- [ ] [Front-end MS-Front in depth](ms-front/README.md)
-- [ ] [Troubleshooting](#troubleshooting)
+1. [Tools Setup](#tools-setup)
+2. [Build & Launch](#build-launch)
+3. [Browse to the app](#browse-to-the-app)
+4. [Manage containers](#manage-containers)
+5. [Stop & Clean](#stop-clean)
+6. [Microservice Developer in depth](developer/README.md)
+7. [Microservice Developer Informations in depth](developer-information/README.md)
+8. [Front-end MS-Front in depth](ms-front/README.md)
+9. [Troubleshooting](#troubleshooting)
 
-## ⚙ Tools Setup
+## ⚙ Tools Setup <a name="tools-setup"></a>
 
 #### 🐳 Docker Desktop for Windows
 
@@ -39,7 +39,7 @@
     - TCP socket: checked
     - Engine API URL: `tcp/localhost:2375`
 
-## 🔧 Build & 🚀 Launch
+## 🔧 Build & 🚀 Launch <a name="build-launch"></a>
 
 To manage the whole project with **Docker Compose** using just few commands
 
@@ -65,11 +65,11 @@ set "COMPOSE_DOCKER_CLI_BUILD=1" & set "DOCKER_BUILDKIT=1" & docker-compose up -
  docker-compose up && docker-compose logs -f
 ```
 
-## 💻 Browse to the app
+## 💻 Browse to the app <a name="browse-to-the-app"></a>
 
 http://localhost
 
-## 🐳 Manage containers
+## 🐳 Manage containers <a name="manage-containers"></a>
 
 > 🛈 Once everything is up, you can manage containers with **Portainer**.
 
@@ -97,7 +97,7 @@ You can try some different scenarios:
 
 > 🛈 The **Order** Microservice is present but still unused by the app nor for one of the other services.
 
-## ✋ Stop & 🚿 Clean
+## ✋ Stop & 🚿 Clean <a name="stop-clean"></a>
 
 To stop all containers:
 
@@ -117,18 +117,18 @@ To stop and remove everything (containers, images, volumes, networks, cash):
  bin\clean-everything.sh
 ```
 
-### 🛠 Troubleshooting
+## 🛠 Troubleshooting <a name="troubleshooting"></a>
 
-#### Warning during the build
+### Warning during the build
 
 There is some warning with `fsevent` during the buils. Just ignore them
 
-#### `Portainer` Launch
+### `Portainer` Launch
 
 - At every relaunch of the container, you have to define a password for the user, before logging.
 - It may occurs some errors when opening Portainer (http://localhost:9000). Just refresh the page.
 
-#### One of the services connot start
+### One of the services connot start
 
 It may occurs if one of the following ports is in use.
 They are needed as followed:
