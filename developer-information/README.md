@@ -1,5 +1,7 @@
 # Developer Informations Microservice
 
+![](https://github.com/veben/microservices/workflows/Developer-information-CI/badge.svg)
+
 ## Class Diagram
 
 ![](img/class-diagram.png)

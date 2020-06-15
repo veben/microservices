@@ -1,4 +1,4 @@
-name: MS-front CI
+name: MS-front-CI
 
 on:
   push:

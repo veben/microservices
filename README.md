@@ -2,6 +2,10 @@
 
 > Created and maintained by veben
 
+![](https://github.com/veben/microservices/workflows/Developer-CI/badge.svg)
+![](https://github.com/veben/microservices/workflows/Developer-information-CI/badge.svg)
+![](https://github.com/veben/microservices/workflows/MS-front-CI/badge.svg)
+
 ## 📜 Table of Contents
 
 - [ ] [Tools Setup](#tools-setup)

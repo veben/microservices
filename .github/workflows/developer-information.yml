@@ -1,4 +1,4 @@
-name: Developer CI
+name: Developer-information-CI
 
 on:
   push:

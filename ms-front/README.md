@@ -1,5 +1,7 @@
 # MS front
 
+![](https://github.com/veben/microservices/workflows/MS-front-CI/badge.svg)
+
 ## Build & Run with Docker Compose
 
 ### Build & Run:
