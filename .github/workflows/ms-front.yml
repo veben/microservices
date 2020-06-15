@@ -17,8 +17,8 @@ jobs:
           node-version: 13.5
 
       - name: Install Angular CLI
-          working-directory: ./ms-front
-          run: npm install @angular/cli
+        working-directory: ./ms-front
+        run: npm install @angular/cli
 
       - name: Test with npm
         working-directory: ./ms-front
