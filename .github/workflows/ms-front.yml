@@ -22,4 +22,4 @@ jobs:
 
       - name: Test with npm
         working-directory: ./ms-front
-        run: npm test
+        run: npm test:ci
