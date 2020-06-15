@@ -1,4 +1,4 @@
-name: Java CI
+name: Developer-information CI
 
 on:
   push:
