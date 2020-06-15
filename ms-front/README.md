@@ -8,18 +8,34 @@
 docker-compose up --build -d && docker-compose logs -f
 ```
 
-### Stop:
+### Build & Run (using **Docker BuildKit**)
+
+> Unix version
 
 ```sh
-docker-compose down
+COMPOSE_DOCKER_CLI_BUILD=1 DOCKER_BUILDKIT=1 docker-compose up --build -d && docker-compose logs -f
+```
+
+> Windows version
+
+```sh
+set "COMPOSE_DOCKER_CLI_BUILD=1" & set "DOCKER_BUILDKIT=1" & docker-compose up --build -d && docker-compose logs -f
 ```
 
 ## Build & Run with Docker
 
 ### Build:
 
+> Unix version
+
 ```sh
-docker build --tag ms-front:test --rm=true .
+DOCKER_BUILDKIT=1 docker build --tag ms-front:test --rm=true .
+```
+
+> Windows version
+
+```sh
+set "DOCKER_BUILDKIT=1" & docker build --tag ms-front:test --rm=true .
 ```
 
 ### Run:

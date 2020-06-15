@@ -1,4 +1,4 @@
-name: Java CI
+name: Angular CI
 
 on:
   push:
@@ -11,11 +11,11 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
-      - name: Set up Java
-        uses: actions/setup-java@v1
+      - name: Set up Node.js
+        uses: actions/setup-node@v1
         with:
-          java-version: 14
+          node-version: 13.5
 
-      - name: Clean & test with Maven
-        working-directory: ./developer
-        run: mvn clean test
+      - name: Test with npm
+        working-directory: ./ms-front
+        run: npm test
