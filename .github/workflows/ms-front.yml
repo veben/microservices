@@ -1,13 +1,13 @@
 name: MS-front-CI
 
+on:
+  push:
+    branches: [master]
+
 env:
   host-vm: ubuntu-latest
   service-folder: ms-front
   node-version: 13.5
-
-on:
-  push:
-    branches: [master]
 
 jobs:
   test:

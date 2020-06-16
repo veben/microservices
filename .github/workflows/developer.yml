@@ -1,13 +1,13 @@
 name: Developer-CI
 
+on:
+  push:
+    branches: [master]
+
 env:
   host-vm: ubuntu-latest
   service-folder: developer
   java-version: 14
-
-on:
-  push:
-    branches: [master]
 
 jobs:
   test:
@@ -21,7 +21,7 @@ jobs:
         with:
           java-version: ${{env.java-version}}
 
-      - name: Clean & test with Maven
+      - name: Verify with Maven
         working-directory: ./${{env.service-folder}}
         run: mvn -B verify
 
