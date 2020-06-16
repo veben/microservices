@@ -7,7 +7,6 @@
 ![](https://github.com/veben/microservices/workflows/MS-front-CI/badge.svg)
 
 # 📜 Table of Contents
-
 1. [Tools Setup](#tools-setup)
 2. [Build & Launch](#build-launch)
 3. [Browse to the app](#browse-to-the-app)
@@ -121,16 +120,16 @@ To stop and remove everything (containers, images, volumes, networks, cash):
 
 ### Warning during the build
 
-There is some warning with `fsevent` during the buils. Just ignore them
+There is some warning with `fsevent` during the build. Just ignore them.
 
 ### `Portainer` Launch
 
 - At every relaunch of the container, you have to define a password for the user, before logging.
-- It may occurs some errors when opening Portainer (http://localhost:9000). Just refresh the page.
+- It may occur some errors when opening Portainer (http://localhost:9000). Just refresh the page.
 
-### One of the services connot start
+### One of the services cannot start
 
-It may occurs if one of the following ports is in use.
+It may occur if one of the following ports is in use.
 They are needed as followed:
 
 - **80**: for Front App
