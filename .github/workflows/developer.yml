@@ -41,16 +41,18 @@ jobs:
     runs-on: ubuntu-latest
     needs: package
     steps:
-      - name: Check out the repository
-        uses: actions/checkout@v2
+      - name: Download jar
+        uses: actions/download-artifact@v1
+        with:
+          name: ${{ env.service-name }}
 
       - uses: actions/setup-java@v1
         with:
           java-version: ${{ env.java-version }}
 
-      - name: Extract
+      - name: Extract jar
         working-directory: ./${{ env.service-name }}
-        run: java -Djarmode=layertools -jar target/${{ env.service-name }}-${{ env.service-version }}.jar extract
+        run: java -Djarmode=layertools -jar ${{ env.service-name }}.jar extract
 
   build-n-push-image:
     runs-on: ubuntu-latest
