@@ -43,6 +43,7 @@ jobs:
 
       - uses: docker/build-push-action@v1
         with:
+          build_args: APP_NAME=developer,APP_VERSION=0.0.1
           path: ./${{env.service-folder}}
           repository: veben/developer
           tags: latest
