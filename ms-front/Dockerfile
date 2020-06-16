@@ -9,8 +9,13 @@ RUN npm install && \
 
 
 # Run stage
-LABEL name=ms-front \
-      maintainer="veben"
-
 FROM nginx:1.17.6-alpine
-COPY --from=build /opt/dist/ms-front /usr/share/nginx/html
+
+ARG APP_NAME
+
+ENV MAINTAINER "veben"
+
+LABEL name=$APP_NAME \
+      maintainer=$MAINTAINER
+
+COPY --from=build "/opt/dist/$APP_NAME" /usr/share/nginx/html

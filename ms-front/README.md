@@ -31,13 +31,13 @@ set "COMPOSE_DOCKER_CLI_BUILD=1" & set "DOCKER_BUILDKIT=1" & docker-compose up -
 > Unix version
 
 ```sh
-DOCKER_BUILDKIT=1 docker build --tag ms-front:test --rm=true .
+DOCKER_BUILDKIT=1 docker build --tag ms-front:test --build-arg APP_NAME=mas-front --rm=true .
 ```
 
 > Windows version
 
 ```sh
-set "DOCKER_BUILDKIT=1" & docker build --tag ms-front:test --rm=true .
+set "DOCKER_BUILDKIT=1" & docker build --tag ms-front:test APP_NAME=mas-front --rm=true .
 ```
 
 ### Run:

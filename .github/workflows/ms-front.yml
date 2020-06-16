@@ -5,7 +5,7 @@ on:
     branches: [master]
 
 env:
-  service-folder: ms-front
+  service-name: ms-front
   node-version: 13.5
 
 jobs:
@@ -18,14 +18,14 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v1
         with:
-          node-version: ${{env.node-version}}
+          node-version: ${{ env.node-version }}
 
       - name: Install Angular CLI
-        working-directory: ./${{env.service-folder}}
+        working-directory: ./${{ env.service-name }}
         run: npm install @angular/cli
 
       - name: Test with npm
-        working-directory: ./${{env.service-folder}}
+        working-directory: ./${{ env.service-name }}
         run: npm run test:ci
 
   package:
@@ -35,14 +35,14 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
         with:
-          node-version: ${{env.node-version}}
+          node-version: ${{ env.node-version }}
 
       - name: Install dependencies
-        working-directory: ./${{env.service-folder}}
+        working-directory: ./${{ env.service-name }}
         run: npm install
 
       - name: Build
-        working-directory: ./${{env.service-folder}}
+        working-directory: ./${{ env.service-name }}
         run: npm run build:prod
 
   upload-sources:
@@ -53,4 +53,21 @@ jobs:
       - uses: actions/upload-artifact@v1
         with:
           name: Upload sources
-          path: ./${{env.service-folder}}
+          path: ./${{ env.service-name }}
+
+  build-n-push-image:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v2
+
+      - uses: docker/build-push-action@v1
+        env:
+          DOCKER_BUILDKIT: 1
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+          repository: veben/${{ env.service-name }}
+          build_args: APP_NAME=${{ env.service-name }}
+          path: ./${{ env.service-name }}
+          tags: latest
