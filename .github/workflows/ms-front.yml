@@ -1,16 +1,17 @@
 name: MS-front-CI
 
+env:
+  host-vm: ubuntu-latest
+  service-folder: ms-front
+  node-version: 13.5
+
 on:
   push:
     branches: [master]
 
-env:
-  node-version: 13.5
-  service-folder: "ms-front"
-
 jobs:
   test:
-    runs-on: ubuntu-latest
+    runs-on: ${{env.host-vm}}
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
@@ -29,7 +30,7 @@ jobs:
         run: npm run test:ci
 
   package:
-    runs-on: ubuntu-latest
+    runs-on: ${{env.host-vm}}
     needs: test
     steps:
       - uses: actions/checkout@v2
@@ -46,7 +47,7 @@ jobs:
         run: npm run build:prod
 
   upload-sources:
-    runs-on: ubuntu-latest
+    runs-on: ${{env.host-vm}}
     needs: package
     steps:
       - uses: actions/checkout@v2
