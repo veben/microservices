@@ -5,7 +5,7 @@ on:
     branches: [master]
 
 env:
-  service-folder: developer
+  service-name: developer
   java-version: 14
 
 jobs:
@@ -20,7 +20,7 @@ jobs:
           java-version: ${{ env.java-version }}
 
       - name: Package
-        working-directory: ./${{ env.service-folder }}
+        working-directory: ./${{ env.service-name }}
         run: mvn -B clean package
 
   upload-jar:
@@ -33,7 +33,7 @@ jobs:
       - uses: actions/upload-artifact@v1
         with:
           name: Upload jar
-          path: ./${{ env.service-folder }}
+          path: ./${{ env.service-name }}
 
   build-n-push-image:
     runs-on: ubuntu-latest
@@ -47,7 +47,7 @@ jobs:
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
-          repository: veben/developer
-          build_args: APP_NAME=developer,APP_VERSION=0.0.1
-          path: ./${{ env.service-folder }}
+          repository: veben/${{ env.service-name }}
+          build_args: APP_NAME=${{ env.service-name }},APP_VERSION=0.0.1
+          path: ./${{ env.service-name }}
           tags: latest

@@ -5,28 +5,49 @@ on:
     branches: [master]
 
 env:
-  service-folder: developer
+  service-name: developer-information
   java-version: 14
 
 jobs:
   package:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - name: Check out the repository
+        uses: actions/checkout@v2
+
       - uses: actions/setup-java@v1
         with:
-          java-version: ${{env.java-version}}
+          java-version: ${{ env.java-version }}
 
       - name: Package
-        working-directory: ./${{env.service-folder}}
+        working-directory: ./${{ env.service-name }}
         run: mvn -B clean package
 
   upload-jar:
     runs-on: ubuntu-latest
     needs: package
     steps:
-      - uses: actions/checkout@v2
+      - name: Check out the repository
+        uses: actions/checkout@v2
+
       - uses: actions/upload-artifact@v1
         with:
           name: Upload jar
-          path: ./${{env.service-folder}}
+          path: ./${{ env.service-name }}
+
+  build-n-push-image:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v2
+
+      - uses: docker/build-push-action@v1
+        env:
+          DOCKER_BUILDKIT: 1
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+          repository: veben/${{ env.service-name }}
+          build_args: APP_NAME=${{ env.service-name }},APP_VERSION=0.0.1
+          path: ./${{ env.service-name }}
+          tags: latest
