@@ -45,8 +45,8 @@ jobs:
         uses: actions/checkout@v2
 
       - uses: actions/setup-java@v1
-          with:
-            java-version: ${{ env.java-version }}
+        with:
+          java-version: ${{ env.java-version }}
 
       - name: Extract
         working-directory: ./${{ env.service-name }}
