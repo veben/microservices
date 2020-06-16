@@ -53,5 +53,6 @@ jobs:
     steps:
       - uses: docker/build-push-action@v1
         with:
+          dockerfile: ./${{env.service-folder}}/Dockerfile 
           repository: veben/microservices
           tags: latest
