@@ -17,10 +17,10 @@ jobs:
 
       - uses: actions/setup-java@v1
         with:
-          java-version: ${{env.java-version}}
+          java-version: ${{ env.java-version }}
 
       - name: Package
-        working-directory: ./${{env.service-folder}}
+        working-directory: ./${{ env.service-folder }}
         run: mvn -B clean package
 
   upload-jar:
@@ -33,7 +33,7 @@ jobs:
       - uses: actions/upload-artifact@v1
         with:
           name: Upload jar
-          path: ./${{env.service-folder}}
+          path: ./${{ env.service-folder }}
 
   build-n-push-image:
     runs-on: ubuntu-latest
@@ -43,9 +43,11 @@ jobs:
 
       - uses: docker/build-push-action@v1
         env:
-            DOCKER_BUILDKIT: 1
+          DOCKER_BUILDKIT: 1
         with:
-          build_args: APP_NAME=developer,APP_VERSION=0.0.1
-          path: ./${{env.service-folder}}
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
           repository: veben/developer
+          build_args: APP_NAME=developer,APP_VERSION=0.0.1
+          path: ./${{ env.service-folder }}
           tags: latest
