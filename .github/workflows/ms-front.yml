@@ -38,8 +38,8 @@ jobs:
         run: npm install
 
       - name: Build
-          working-directory: ./ms-front
-          run: npm run build:prod
+        working-directory: ./ms-front
+        run: npm run build:prod
 
   upload-sources:
     runs-on: ubuntu-latest
