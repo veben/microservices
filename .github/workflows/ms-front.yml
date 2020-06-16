@@ -5,13 +5,12 @@ on:
     branches: [master]
 
 env:
-  host-vm: ubuntu-latest
   service-folder: ms-front
   node-version: 13.5
 
 jobs:
   test:
-    runs-on: ${{env.host-vm}}
+    runs-on: ubuntu-latest
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
@@ -30,7 +29,7 @@ jobs:
         run: npm run test:ci
 
   package:
-    runs-on: ${{env.host-vm}}
+    runs-on: ubuntu-latest
     needs: test
     steps:
       - uses: actions/checkout@v2
@@ -47,7 +46,7 @@ jobs:
         run: npm run build:prod
 
   upload-sources:
-    runs-on: ${{env.host-vm}}
+    runs-on: ubuntu-latest
     needs: package
     steps:
       - uses: actions/checkout@v2
