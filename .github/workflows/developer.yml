@@ -50,7 +50,8 @@ jobs:
   build-n-push-image:
     runs-on: ubuntu-latest
     needs: upload-jar
-    uses: docker/build-push-action@v1
-    with:
-      repository: veben/microservices
-      tags: latest
+    steps:
+      - uses: docker/build-push-action@v1
+        with:
+          repository: veben/microservices
+          tags: latest
