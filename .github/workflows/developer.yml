@@ -24,18 +24,11 @@ jobs:
         working-directory: ./${{ env.service-name }}
         run: mvn -B clean package
 
-  upload-jar:
-    runs-on: ubuntu-latest
-    needs: package
-    steps:
-      - name: Check out the repository
-        uses: actions/checkout@v2
-
       - name: Upload jar
         uses: actions/upload-artifact@v1
         with:
           name: ${{ env.service-name }}
-          path: ./${{ env.service-name }}/target/${{ env.service-name }}-${{ env.service-version }}.jar
+          path: ./target/${{ env.service-name }}-${{ env.service-version }}.jar
 
   extract-jar:
     runs-on: ubuntu-latest
