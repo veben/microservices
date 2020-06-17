@@ -13,11 +13,7 @@ services:
 
   developer:
     container_name: developer
-    build:
-      context: ./developer
-      args:
-        - APP_NAME=developer
-        - APP_VERSION=0.0.1
+    image: veben/developer:latest # Image from Docker hub
     ports:
       - 8090:8090
 
@@ -39,11 +35,7 @@ services:
 
   developer-information:
     container_name: developer-information
-    build:
-      context: ./developer-information
-      args:
-        - APP_NAME=developer-information
-        - APP_VERSION=0.0.1
+    image: veben/developer-information:latest # Image from Docker hub
     ports:
       - 8092:8092
 

@@ -2,86 +2,52 @@
 
 ![](https://github.com/veben/microservices/workflows/Developer-CI/badge.svg)
 
-## Class Diagram
+## I. Class Diagram
 
 ![](img/class-diagram.png)
 
-## Build & Run with Docker Compose
+## II. Run application
 
-### Build & Run:
-
+### 1. First (easy) possibility: run it with Docker Compose
+Launch the application inside a Docker container, based on the following [image](https://hub.docker.com/repository/docker/veben/developer), hosted in Docker hub.
 ```sh
-docker-compose up --build -d && docker-compose logs -f
+docker-compose up
 ```
 
-### Build & Run (using **Docker BuildKit**)
+### 2. Second possibility: run it with Docker
+Do the same but with 2 different commands, one for the database container, and one for the service container
 
-> Unix version
-
-```sh
-COMPOSE_DOCKER_CLI_BUILD=1 DOCKER_BUILDKIT=1 docker-compose up --build -d && docker-compose logs -f
-```
-
-> Windows version
-
-```sh
-set "COMPOSE_DOCKER_CLI_BUILD=1" & set "DOCKER_BUILDKIT=1" & docker-compose up --build -d && docker-compose logs -f
-```
-
-## Build & Run with Docker
-
-### Datasource:
-
+#### Datasource:
 > Launch PostgreSQL in a Docker container with:
-
 ```sh
 docker run --name developer-postgresql -p 5433:5432 -e POSTGRES_DB=developer -e POSTGRES_PASSWORD=pass postgres:12-alpine
 ```
 
-### Build:
-
-> Unix version
-
+#### Run:
 ```sh
-DOCKER_BUILDKIT=1 docker build --tag developer:test --build-arg APP_NAME=developer --build-arg APP_VERSION=0.0.1 --rm=true .
+docker run -it --name developer --publish=8090:8090 veben/developer:latest
 ```
 
-> Windows version
-
-```sh
-set "DOCKER_BUILDKIT=1" & docker build --tag developer:test --build-arg APP_NAME=developer --build-arg APP_VERSION=0.0.1 --rm=true .
-```
-
-### Run:
-
-```sh
-docker run -it --name developer --publish=8090:8090 developer:test
-```
-
-## Build & Run with Docker + Maven Wrapper
+### 3. Third possibility: run with Docker + Maven Wrapper
+Launch the database in a container and the application locally with Maven
 
 ### Datasource:
-
 > Launch PostgreSQL in a Docker container with:
-
 ```sh
 docker run --name developer-postgresql -p 5433:5432 -e POSTGRES_DB=developer -e POSTGRES_PASSWORD=pass postgres:12-alpine
 ```
 
-### Build:
-
+#### Build jar:
 ```sh
 mvnw clean install
 ```
 
-### Run:
-
+#### Run:
 ```sh
 mvnw spring-boot:run -Dspring-boot.run.profiles=local
 ```
 
 ## Access
-
 - Actuator: http://localhost:8090/actuator/health
 - Swagger: http://localhost:8090/swagger-ui.html
 - Database: jdbc:postgresql://localhost:5433/developer
@@ -89,9 +55,7 @@ mvnw spring-boot:run -Dspring-boot.run.profiles=local
   - Password: pass
 
 ## Dataset
-
 ### Developer table:
-
 > All data come from Github and Stackoverflow public API
 
 | id                                   | avatar                                                                                           | location       | nickname      | speciality |

@@ -2,100 +2,63 @@
 
 ![](https://github.com/veben/microservices/workflows/Developer-information-CI/badge.svg)
 
-## Class Diagram
+## I. Class Diagram
 
 ![](img/class-diagram.png)
 
-## Build & Run with Docker Compose
+## II. Run application
 
-### Build & Run:
-
+### 1. First (easy) possibility: run it with Docker Compose
+Launch the application inside a Docker container, based on the following [image](https://hub.docker.com/repository/docker/veben/developer-information), hosted in Docker hub.
 ```sh
-docker-compose up --build -d && docker-compose logs -f
+docker-compose up
 ```
 
-### Build & Run (using **Docker BuildKit**)
+### 2. Second possibility: run it with Docker
+Do the same but with 2 different commands, one for the database container, and one for the service container
 
-> Unix version
-
-```sh
-COMPOSE_DOCKER_CLI_BUILD=1 DOCKER_BUILDKIT=1 docker-compose up --build -d && docker-compose logs -f
-```
-
-> Windows version
-
-```sh
-set "COMPOSE_DOCKER_CLI_BUILD=1" & set "DOCKER_BUILDKIT=1" & docker-compose up --build -d && docker-compose logs -f
-```
-
-## Build & Run with Docker
-
-### Datasource:
-
+#### Datasource:
 > Launch MongoDb in a Docker container with:
-
 ```sh
 docker run --name developer-information-mongodb -p 27018:27017 -e MONGO_INITDB_ROOT_USERNAME=root -e MONGO_INITDB_ROOT_PASSWORD=root mongo:4.2.1
 ```
 
-### Add dataset:
-
+#### Add dataset:
 > Connect to mongo
-
 ```sh
 docker exec -it developer-information-mongodb mongo
 ```
 
 > In another shell, insert data
-
 ```sh
 docker cp mongo/data-local.json developer-information-mongodb:/data-local.json && docker exec developer-information-mongodb mongoimport -d developer-information -c developer-information -u root -p root --authenticationDatabase admin --file /data-local.json --jsonArray
 ```
 
-### Build:
-
-> Unix version
-
+#### Run:
 ```sh
-DOCKER_BUILDKIT=1 docker build --tag developer-information:test --build-arg APP_NAME=developer-information --build-arg APP_VERSION=0.0.1 --rm=true .
+docker run -it --name developer-information --publish=8092:8092 veben/developer:latest
 ```
 
-> Windows version
+### 3. Third possibility: run with Docker + Maven Wrapper
+Launch the database in a container and the application locally with Maven
 
-```sh
-set "DOCKER_BUILDKIT=1" & docker build --tag developer-information:test --build-arg APP_NAME=developer-information --build-arg APP_VERSION=0.0.1 --rm=true .
-```
-
-### Run:
-
-```sh
-docker run -it --name developer-information --publish=8092:8092 developer-information:test
-```
-
-## Build & Run with Docker + Maven Wrapper
-
-### Datasource:
-
+#### Datasource:
 > Launch MongoDb in a Docker container with:
-
 ```sh
 docker run --name developer-information-mongodb -p 27018:27017 -e MONGO_INITDB_ROOT_USERNAME=root -e MONGO_INITDB_ROOT_PASSWORD=root mongo:4.2.1
 ```
 
-### Build:
-
+#### Build jar:
 ```sh
 mvnw clean install
 ```
 
-### Run:
-
+#### Run:
 ```sh
 mvnw spring-boot:run -Dspring-boot.run.profiles=local
 ```
 
 ## Access
-
 - Actuator: http://localhost:8092/actuator/health
 - Swagger: http://localhost:8092/swagger-ui.html
 - Database:
@@ -110,7 +73,6 @@ mvnw spring-boot:run -Dspring-boot.run.profiles=local
     ```
 
 ## Dataset
-
 > All data come from Github and Stackoverflow public API
 
 ```json

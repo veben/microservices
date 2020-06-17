@@ -13,10 +13,6 @@ services:
 
   developer:
     container_name: developer
-    build:
-      context: .
-      args:
-        - APP_NAME=developer
-        - APP_VERSION=0.0.1
+    image: veben/developer:latest # Image from Docker hub
     ports:
       - 8090:8090
