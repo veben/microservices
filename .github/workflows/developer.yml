@@ -25,13 +25,17 @@ jobs:
         working-directory: ./${{ env.service-name }}
         run: mvn -B clean package
 
-      - name: Upload artifact
+      - name: Upload jar
         uses: actions/upload-artifact@v1
         with:
           name: ${{ env.service-name }}
-          path: |
-            ${{ env.service-name }}/target/${{ env.service-name }}-${{ env.service-version }}.jar
-            ${{ env.service-name }}/Dockerfile
+          path: ${{ env.service-name }}/target/${{ env.service-name }}-${{ env.service-version }}.jar
+
+      - name: Upload Dockerfile
+          uses: actions/upload-artifact@v1
+          with:
+            name: ${{ env.service-name }}
+            path: ${{ env.service-name }}/Dockerfile
 
   build-n-push-image:
     runs-on: ubuntu-latest
