@@ -45,7 +45,7 @@ jobs:
 
       - name: Extract jar
         working-directory: ./${{ env.service-name }}
-        run: java -Djarmode=layertools -jar ${{ env.service-name }}.jar extract
+        run: java -Djarmode=layertools -jar {{ env.service-name }}-${{ env.service-version }}.jar extract
 
 #  build-n-push-image:
 #    runs-on: ubuntu-latest
