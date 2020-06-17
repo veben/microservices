@@ -28,7 +28,8 @@ jobs:
         uses: actions/upload-artifact@v1
         with:
           name: ${{ env.service-name }}
-          path: ./target/${{ env.service-name }}-${{ env.service-version }}.jar
+          working-directory: ./${{ env.service-name }}/target
+          path: ${{ env.service-name }}-${{ env.service-version }}.jar
 
   extract-jar:
     runs-on: ubuntu-latest
