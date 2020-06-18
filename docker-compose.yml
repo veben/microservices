@@ -42,8 +42,7 @@ services:
   ########################## MS FRONT ##########################
   ms-front:
     container_name: ms-front
-    build:
-      context: ./ms-front
+    image: veben/ms-front:latest # Image from Docker hub
     ports:
       - 80:80
 

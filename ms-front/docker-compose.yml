@@ -3,9 +3,6 @@ services:
   ########################## MS FRONT ##########################
   ms-front:
     container_name: ms-front
-    build:
-      context: .
-      args:
-        - APP_NAME=ms-front
+    image: veben/ms-front:latest # Image from Docker hub
     ports:
       - 80:80
