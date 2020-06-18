@@ -51,7 +51,7 @@ jobs:
         uses: actions/upload-artifact@v1
         with:
           name: ${{ env.service-name }}
-          path: ${{ env.service-name }}/dist/${{ env.service-name }}
+          path: ${{ env.service-name }}/dist/
 
       - name: Upload Dockerfile
         uses: actions/upload-artifact@v1

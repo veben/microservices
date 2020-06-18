@@ -17,7 +17,7 @@
 8. [Front-end MS-Front in depth](ms-front/README.md)
 9. [Troubleshooting](#troubleshooting)
 
-## ⚙ Tools Setup <a name="tools-setup"></a>
+## 1. ⚙ Tools Setup <a name="tools-setup"></a>
 
 #### 🐳 Docker Desktop for Windows
 
@@ -37,7 +37,7 @@
     - TCP socket: checked
     - Engine API URL: `tcp/localhost:2375`
 
-## 🔧 Build & 🚀 Launch <a name="build-launch"></a>
+## 2. 🔧 Build & 🚀 Launch <a name="build-launch"></a>
 To manage the whole project with **Docker Compose** using just few commands
 > ⚠ The first one build is very long
 
@@ -57,10 +57,10 @@ set "COMPOSE_DOCKER_CLI_BUILD=1" & set "DOCKER_BUILDKIT=1" & docker-compose up -
  docker-compose up && docker-compose logs -f
 ```
 
-## 💻 Browse to the app <a name="browse-to-the-app"></a>
+## 3. 💻 Browse to the app <a name="browse-to-the-app"></a>
 http://localhost
 
-## 🐳 Manage containers <a name="manage-containers"></a>
+## 4. 🐳 Manage containers <a name="manage-containers"></a>
 > 🛈 Once everything is up, you can manage containers with **Portainer**.
 
 Just enter the following address on a browser: http://localhost:9000
@@ -81,7 +81,7 @@ You can try some different scenarios:
 
 > 🛈 The **Order** Microservice is present but still unused by the app nor for one of the other services.
 
-## ✋ Stop & 🚿 Clean <a name="stop-clean"></a>
+## 5. ✋ Stop & 🚿 Clean <a name="stop-clean"></a>
 To stop all containers:
 > 🛈 Have to be launch with **Git Bash** or **Bash for Windows**.
 
@@ -99,7 +99,7 @@ To stop and remove everything (containers, images, volumes, networks, cash):
  bin\clean-everything.sh
 ```
 
-## 🛠 Troubleshooting <a name="troubleshooting"></a>
+## 9. 🛠 Troubleshooting <a name="troubleshooting"></a>
 ### Warning during the build
 There is some warning with `fsevent` during the build. Just ignore them.
 

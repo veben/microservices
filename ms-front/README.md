@@ -2,59 +2,33 @@
 
 ![](https://github.com/veben/microservices/workflows/MS-front-CI/badge.svg)
 
-## Build & Run with Docker Compose
-### Build & Run:
+## II. Run application
+
+### 1. First (easy) possibility: run it with Docker Compose
+Launch the application inside a Docker container, based on the following [image](https://hub.docker.com/repository/docker/veben/mas-front), hosted in Docker hub.
 ```sh
-docker-compose up --build -d && docker-compose logs -f
+docker-compose up
 ```
 
-### Build & Run (using **Docker BuildKit**)
-> Unix version
-
+### 2. Second possibility: run it with Docker
 ```sh
-COMPOSE_DOCKER_CLI_BUILD=1 DOCKER_BUILDKIT=1 docker-compose up --build -d && docker-compose logs -f
+docker run -it --name ms-front --publish=80:80 veben/ms-front:latest
 ```
 
-> Windows version
-```sh
-set "COMPOSE_DOCKER_CLI_BUILD=1" & set "DOCKER_BUILDKIT=1" & docker-compose up --build -d && docker-compose logs -f
-```
+### 3. Third possibility: run it locally with npm
 
-## Build & Run with Docker
-### Build:
-> Unix version
-
-```sh
-DOCKER_BUILDKIT=1 docker build --tag ms-front:test --build-arg APP_NAME=mas-front --rm=true .
-```
-
-> Windows version
-```sh
-set "DOCKER_BUILDKIT=1" & docker build --tag ms-front:test APP_NAME=mas-front --rm=true .
-```
-
-### Run:
-```sh
-docker run -it --name ms-front --publish=80:80 ms-front:test
-```
-
-## Install dependencies & Run with npm
-### Install dependencies:
+#### Install dependencies:
 ```sh
 npm install
 ```
 
-### Run:
+#### Run:
 ```sh
 npm start
 ```
 
-## Build locally:
-```sh
-npm build
-```
 
-## Access
+## III. Access
 With `Docker` deployment: http://localhost
 
 With `Local` deployment: http://localhost:4200
