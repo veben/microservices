@@ -9,7 +9,7 @@ env:
   node-version: 13.5
 
 jobs:
-  test:
+  test 🔍:
     runs-on: ubuntu-latest
     steps:
       - name: Check out the repository
@@ -28,9 +28,9 @@ jobs:
         working-directory: ./${{ env.service-name }}
         run: npm run test:ci
 
-  package:
+  package 📦:
     runs-on: ubuntu-latest
-    needs: test
+    needs: test 🔍
     steps:
       - name: Check out the repository
         uses: actions/checkout@v2
@@ -59,9 +59,9 @@ jobs:
           name: ${{ env.service-name }}
           path: ${{ env.service-name }}/Dockerfile
 
-  build-n-push-image:
+  build-n-push-image 🐳:
     runs-on: ubuntu-latest
-    needs: package
+    needs: package 📦
     steps:
       - name: Download artifact
         uses: actions/download-artifact@v1

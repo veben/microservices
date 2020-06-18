@@ -10,7 +10,7 @@ env:
   java-version: 14
 
 jobs:
-  package-jar:
+  package-jar 📦:
     runs-on: ubuntu-latest
     steps:
       - name: Check out the repository
@@ -37,9 +37,9 @@ jobs:
           name: ${{ env.service-name }}
           path: ${{ env.service-name }}/Dockerfile
 
-  build-n-push-image:
+  build-n-push-image 🐳:
     runs-on: ubuntu-latest
-    needs: package-jar
+    needs: package-jar 📦
     steps:
       - name: Download artifact
         uses: actions/download-artifact@v1
