@@ -1,13 +1,11 @@
 package com.veben.microservices.developerinformation.ext.db;
 
-import com.veben.microservices.developerinformation.domain.DeveloperInformation;
 import com.veben.microservices.developerinformation.ext.db.config.AbstractRepositoryTest;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Arrays;
-import java.util.Set;
 
 import static com.veben.microservices.developerinformation.ext.db.utils.DeveloperInformationUtils.insertExampleJson;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -26,7 +24,7 @@ class JpaDeveloperInformationRepositoryTest extends AbstractRepositoryTest {
     @Test
     void should_find_all_informations() {
         // when
-        final Set<DeveloperInformation> allInformations = repository.findAllInformations();
+        final var allInformations = repository.findAllInformations();
 
         // then
         assertThat(allInformations.size()).isEqualTo(36);
@@ -38,7 +36,7 @@ class JpaDeveloperInformationRepositoryTest extends AbstractRepositoryTest {
         final var givenDevId = "3bdfbba3-d472-4431-b9ac-c203e7505b8b";
 
         // when
-        final DeveloperInformation result = repository.findDeveloperInformationForDeveloper(givenDevId);
+        final var result = repository.findDeveloperInformationForDeveloper(givenDevId);
 
         // then
         assertThat(result).isNotNull();

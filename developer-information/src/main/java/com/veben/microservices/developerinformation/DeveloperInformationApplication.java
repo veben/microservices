@@ -10,16 +10,16 @@ import org.springframework.context.ConfigurableApplicationContext;
 public class DeveloperInformationApplication {
     public static void main(String[] args) {
 
-        ConfigurableApplicationContext context = SpringApplication.run(DeveloperInformationApplication.class, args);
+        var context = SpringApplication.run(DeveloperInformationApplication.class, args);
 
         logStartupInformations(context);
     }
 
     private static void logStartupInformations(ConfigurableApplicationContext context) {
-        String protocol = context.getEnvironment().getProperty("application.protocol");
-        String host = context.getEnvironment().getProperty("application.host");
-        String port = context.getEnvironment().getProperty("server.port");
-        String name = context.getEnvironment().getProperty("spring.application.name");
+        var protocol = context.getEnvironment().getProperty("application.protocol");
+        var host = context.getEnvironment().getProperty("application.host");
+        var port = context.getEnvironment().getProperty("server.port");
+        var name = context.getEnvironment().getProperty("spring.application.name");
 
         log.info("**********************************************************************");
         log.info("[{}] ℳicroservice from veben is UP", name);

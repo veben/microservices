@@ -23,7 +23,7 @@ class MongoDbInitializer implements ApplicationContextInitializer<ConfigurableAp
     private void defineMongoDbConnection(ConfigurableApplicationContext configurableApplicationContext) {
         log.info("Overriding Spring Properties for MongoDb...");
 
-        final TestPropertyValues values = TestPropertyValues.of("spring.data.mongodb.uri="
+        final var values = TestPropertyValues.of("spring.data.mongodb.uri="
                 + "mongodb://"
                 + mongoDbContainer.getContainerIpAddress()
                 + ":"
