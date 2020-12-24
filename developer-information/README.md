@@ -9,56 +9,71 @@
 ## II. Run application
 
 ### 1. First (easy) possibility: run it with Docker Compose
+
 Launch the application inside a Docker container, based on the following [image](https://hub.docker.com/repository/docker/veben/developer-information), hosted in Docker hub.
+
 ```sh
 docker-compose up
 ```
 
 ### 2. Second possibility: run it with Docker
+
 Do the same but with 2 different commands, one for the database container, and one for the service container
 
 #### Datasource:
+
 > Launch MongoDb in a Docker container with:
+
 ```sh
 docker run --name developer-information-mongodb -p 27018:27017 -e MONGO_INITDB_ROOT_USERNAME=root -e MONGO_INITDB_ROOT_PASSWORD=root mongo:4.2.1
 ```
 
 #### Add dataset:
+
 > Connect to mongo
+
 ```sh
 docker exec -it developer-information-mongodb mongo
 ```
 
 > In another shell, insert data
+
 ```sh
 docker cp mongo/data-local.json developer-information-mongodb:/data-local.json && docker exec developer-information-mongodb mongoimport -d developer-information -c developer-information -u root -p root --authenticationDatabase admin --file /data-local.json --jsonArray
 ```
 
 #### Run:
+
 ```sh
 docker run -it --name developer-information --publish=8092:8092 veben/developer:latest
 ```
 
 ### 3. Third possibility: run with Docker + Maven Wrapper
+
 Launch the database in a container and the application locally with Maven
 
 #### Datasource:
+
 > Launch MongoDb in a Docker container with:
+
 ```sh
 docker run --name developer-information-mongodb -p 27018:27017 -e MONGO_INITDB_ROOT_USERNAME=root -e MONGO_INITDB_ROOT_PASSWORD=root mongo:4.2.1
 ```
 
 #### Build jar:
+
 ```sh
 mvnw clean install
 ```
 
 #### Run:
+
 ```sh
 mvnw spring-boot:run -Dspring-boot.run.profiles=local
 ```
 
 ## III. Access
+
 - Actuator: http://localhost:8092/actuator/health
 - Swagger: http://localhost:8092/swagger-ui.html
 - Database:
@@ -73,25 +88,26 @@ mvnw spring-boot:run -Dspring-boot.run.profiles=local
     ```
 
 ## IV. Dataset
+
 > All data come from Github and Stackoverflow public API
 
 ```json
 [
   {
     "developerId": "3bdfbba3-d472-4431-b9ac-c203e7505b8b",
-    "about": "Software Engineer, France, Paris",
+    "about": "Computer Science Engineer, France, Paris",
     "websiteUrl": "",
     "stackOverflowUrl": "https://stackoverflow.com/users/8718377/veben",
     "avatarUrl": "https://i.stack.imgur.com/kGFwM.png?s=128&g=1",
-    "goldBadges": 6,
-    "silverBadges": 20,
-    "bronzeBadges": 35,
-    "reputation": 2774,
+    "goldBadges": 9,
+    "silverBadges": 37,
+    "bronzeBadges": 50,
+    "reputation": 5792,
     "githubUrl": "https://github.com/veben",
     "name": "veben",
     "company": "",
-    "publicRepositories": 4,
-    "followers": 1
+    "publicRepositories": 11,
+    "followers": 6
   },
   {
     "developerId": "4ca98fd9-927e-40e5-854b-392669f98204",

@@ -2,7 +2,9 @@ name: Developer-information-CI
 
 on:
   push:
-    branches: [master]
+    branches:
+      - "master"
+      - "feature/**"
 
 env:
   service-name: developer-information

@@ -2,7 +2,9 @@ name: MS-front-CI
 
 on:
   push:
-    branches: [master]
+    branches:
+      - "master"
+      - "feature/**"
 
 env:
   service-name: ms-front

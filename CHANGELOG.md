@@ -1,3 +1,9 @@
+# v5.0.0
+
+- Upgraded to java 15
+- Upgraded to Spring boot 2.4.1
+- Upgraded to Angular 10
+
 # v4.0.0
 
 - Add Github Actions to:
