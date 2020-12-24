@@ -6,7 +6,7 @@ on:
 
 env:
   service-name: ms-front
-  node-version: 13.5
+  node-version: 14.15.3
 
 jobs:
   test:
