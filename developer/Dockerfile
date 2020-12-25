@@ -1,4 +1,4 @@
-FROM adoptopenjdk/openjdk14:alpine-jre-nightly
+FROM adoptopenjdk/openjdk15:alpine-jre
 
 ARG APP_NAME
 ARG APP_VERSION

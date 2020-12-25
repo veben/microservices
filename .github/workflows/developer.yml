@@ -2,12 +2,14 @@ name: Developer-CI
 
 on:
   push:
-    branches: [master]
+    branches:
+      - "master"
+      - "feature/**"
 
 env:
   service-name: developer
   service-version: 0.0.1
-  java-version: 14
+  java-version: 15
 
 jobs:
   package-jar:
