@@ -7,6 +7,7 @@
 ![](https://github.com/veben/microservices/workflows/MS-front-CI/badge.svg)
 
 # 📜 Table of Contents
+
 1. [Tools Setup](#tools-setup)
 2. [Build & Launch](#build-launch)
 3. [Browse to the app](#browse-to-the-app)
@@ -24,6 +25,7 @@
 - [Download](https://download.docker.com/win/stable/Docker%20Desktop%20Installer.exe)
 - Install
   > Check your current version:
+
 ```sh
  docker --version
 ```
@@ -38,29 +40,37 @@
     - Engine API URL: `tcp/localhost:2375`
 
 ## 2. 🔧 Build & 🚀 Launch <a name="build-launch"></a>
+
 To manage the whole project with **Docker Compose** using just few commands
+
 > ⚠ The first one build is very long
 
 ### With experimental **Docker BuildKit**:
+
 > Unix version
+
 ```sh
 COMPOSE_DOCKER_CLI_BUILD=1 DOCKER_BUILDKIT=1 docker-compose up --build -d && docker-compose logs -f
 ```
 
 > Windows version
+
 ```sh
 set "COMPOSE_DOCKER_CLI_BUILD=1" & set "DOCKER_BUILDKIT=1" & docker-compose up --build -d && docker-compose logs -f
 ```
 
 ### Without **Docker BuildKit**
+
 ```sh
  docker-compose up && docker-compose logs -f
 ```
 
 ## 3. 💻 Browse to the app <a name="browse-to-the-app"></a>
+
 http://localhost
 
 ## 4. 🐳 Manage containers <a name="manage-containers"></a>
+
 > 🛈 Once everything is up, you can manage containers with **Portainer**.
 
 Just enter the following address on a browser: http://localhost:9000
@@ -82,7 +92,25 @@ You can try some different scenarios:
 > 🛈 The **Order** Microservice is present but still unused by the app nor for one of the other services.
 
 ## 5. ✋ Stop & 🚿 Clean <a name="stop-clean"></a>
+
+### For Unix users
+
+To remove all containers:
+
+```sh
+docker rm -vf $(docker ps -a -q)
+```
+
+To remove all images:
+
+```sh
+docker rmi -f $(docker images -a -q)
+```
+
+### For Windows users
+
 To stop all containers:
+
 > 🛈 Have to be launch with **Git Bash** or **Bash for Windows**.
 
 ```sh
@@ -100,14 +128,18 @@ To stop and remove everything (containers, images, volumes, networks, cash):
 ```
 
 ## 9. 🛠 Troubleshooting <a name="troubleshooting"></a>
+
 ### Warning during the build
+
 There is some warning with `fsevent` during the build. Just ignore them.
 
 ### `Portainer` Launch
+
 - At every relaunch of the container, you have to define a password for the user, before logging.
 - It may occur some errors when opening Portainer (http://localhost:9000). Just refresh the page.
 
 ### One of the services cannot start
+
 It may occur if one of the following ports is in use.
 They are needed as followed:
 
